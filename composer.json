@@ -1,0 +1,20 @@
+{
+    "name": "fleurdeveley/blog",
+    "description": "OC P5 Blog",
+    "type": "project",
+    "authors": [
+        {
+            "name": "fleur",
+            "email": "fleurdeveley@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blog\\": "src/"
+        }
+    }
+}
