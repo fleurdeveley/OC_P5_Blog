@@ -1,0 +1,23 @@
+.bg-perso1 {
+    background-color: #ABA899 !important;
+}
+
+.bg-perso2 {
+    background-color: #533524 !important;
+}
+
+.bg-perso3 {
+    background-color: #7D5641 !important;
+}
+
+.bg-perso4 {
+    background-color: #536056 !important;
+}
+
+#photo {
+    border-radius: 80px;
+}
+
+#home .card {
+    min-height: 150px !important;
+}
