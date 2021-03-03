@@ -1,21 +1,17 @@
 .bg-perso1 {
-    background-color: #ABA899 !important;
+    background-color: #E5A5B8 !important;
 }
 
 .bg-perso2 {
-    background-color: #533524 !important;
+    background-color: #565656 !important;
 }
 
 .bg-perso3 {
-    background-color: #7D5641 !important;
+    background-color: #F7E9EC !important;
 }
 
 .bg-perso4 {
-    background-color: #536056 !important;
-}
-
-#photo {
-    border-radius: 80px;
+    background-color: #848484 !important;
 }
 
 #home .card {
