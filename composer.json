@@ -10,11 +10,16 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "symfony/http-foundation": "5.x-dev",
+      "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
             "Blog\\": "src/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0@dev"
     }
 }

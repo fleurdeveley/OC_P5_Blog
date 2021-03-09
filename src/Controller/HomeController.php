@@ -13,7 +13,7 @@ class HomeController {
             'cache' => false,
         ]);
 
-        echo $twig->render('Frontend/home.twig');
+        return $twig->render('Frontend/home.twig');
     }
 
 }
