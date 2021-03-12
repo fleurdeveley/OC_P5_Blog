@@ -13,7 +13,8 @@
         "twig/twig": "^2.0",
         "symfony/http-foundation": "5.x-dev",
       "ext-pdo": "*",
-        "symfony/routing": "5.x-dev"
+        "symfony/routing": "5.x-dev",
+        "symfony/http-kernel": "5.x-dev"
     },
     "autoload": {
         "psr-4": {
