@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <section id="post">
+        <div class="card mb-3 p-1">
+            <img src="../public/img/composer.png" class="card-img-top" alt="Responsive image">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <?= $post->getTitle(); ?>
+                </h3>
+                <p class="card-text text-justify">
+                    <?= $post->getChapo(); ?>
+                </p>
+
+                <p class="card-text">
+                <div class="d-inline font-italic text-secondary">
+                    <small>publié le <?= $post->getUpdatedAt(); ?></small>
+                </div>
+                <a href="/" class="btn btn-light border d-line float-right">Lire la suite</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
