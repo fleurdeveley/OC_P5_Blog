@@ -2,18 +2,20 @@
 
 namespace Blog\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Twig\Loader\FilesystemLoader;
 
 class HomeController {
 
-    public function home() {
+    public function home(Request $request) {
 
         $loader = new FilesystemLoader('../src/View');
         $twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
 
-        echo $twig->render('Frontend/home.twig');
+        return new Response($twig->render('Frontend/home.twig'));
     }
 
 }
