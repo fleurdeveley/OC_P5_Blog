@@ -4,7 +4,7 @@ namespace Blog\Model;
 
 use PDO;
 
-class PostManager extends Manager
+class PostsManager extends Manager
 {
     public function getPosts() {
         $posts = [];
@@ -12,7 +12,7 @@ class PostManager extends Manager
         $query = $this->db->query('SELECT * FROM post ORDER BY created_at');
 
         while($data = $query->fetch(PDO::FETCH_ASSOC)) {
-            $posts [] = new Post($data);
+            $posts [] = new Posts($data);
         }
 
         return $posts;

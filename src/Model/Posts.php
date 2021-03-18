@@ -5,7 +5,7 @@ namespace Blog\Model;
 use DateTime;
 use Exception;
 
-class Post extends Model
+class Posts extends Model
 {
     private $id;
     private $category_id;

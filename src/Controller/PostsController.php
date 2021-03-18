@@ -4,14 +4,14 @@ namespace Blog\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use \Blog\Model\PostManager;
+use \Blog\Model\PostsManager;
 
 class PostsController extends Controller {
 
     public function posts(Request $request) {
-        $postManager = new PostManager();
+        $postsManager = new PostsManager();
 
-        $posts = $postManager->getPosts();
+        $posts = $postsManager->getPosts();
 
         return new Response($this->twig->render('Frontend/posts.twig', ['posts' => $posts]));
     }
