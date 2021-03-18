@@ -4,16 +4,26 @@ namespace Blog\Model;
 
 use PDO;
 
-class Manager 
+/**
+ * Class Manager
+ */
+
+abstract class Manager
 {
     protected $db;
 
-    public function __construct() 
+    /**
+     * Manager constructor.
+     */
+    public function __construct()
     {
         $this->db = $this->dbConnect();
     }
 
-    protected function dbConnect() 
+    /**
+     * @return PDO
+     */
+    protected function dbConnect(): PDO
     {
         return new PDO(
             'mysql:host=mysql_mysql; dbname=blog; charset=utf8',

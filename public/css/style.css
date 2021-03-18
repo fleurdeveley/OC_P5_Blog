@@ -1,3 +1,11 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2, h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
 .bg-perso1 {
     background-color: #E5A5B8 !important;
 }
@@ -16,6 +24,19 @@
 
 .color-perso2 {
     color: #565656 !important;
+}
+
+.color-perso1 {
+    background-color: #E5A5B8 !important;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #E5A5B8 !important;
+}
+
+a {
+    color: #848484 !important;
 }
 
 #home .card {

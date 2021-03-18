@@ -5,7 +5,12 @@ namespace Blog\Model;
 use DateTime;
 use Exception;
 
-class Posts extends Model
+/**
+ * Class Posts
+ * represents a post entity
+ */
+
+class Post extends Model
 {
     private $id;
     private $category_id;
@@ -17,48 +22,87 @@ class Posts extends Model
     private $picture;
     private $updated_at;
 
-    public function getId()
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
+
+    /**
+     * @param $id
+     */
     public function setId($id)
     {
         $this->id = (int) $id;
     }
 
+    /**
+     * @return int
+     */
     public function getCategoryId()
     {
         return $this->category_id;
     }
+
+
+    /**
+     * @param $category_id
+     */
     public function setCategoryId($category_id)
     {
         $this->category_id = (int) $category_id;
     }
 
+
+    /**
+     * @return int
+     */
     public function getUserId()
     {
         return $this->user_id;
     }
+
+
+    /**
+     * @param $user_id
+     */
     public function setUserId($user_id)
     {
         $this->user_id = (int)$user_id;
     }
 
+
+    /**
+     * @return string
+     */
     public function getTitle()
     {
         return $this->title;
     }
-        public function setTitle($title)
+
+    /**
+     * @param $title
+     */
+    public function setTitle($title)
     {
         if (is_string($title)) {
             $this->title = htmlspecialchars($title);
         }
     }
 
+    /**
+     * @return string
+     */
     public function getChapo()
     {
         return $this->chapo;
     }
+
+    /**
+     * @param $chapo
+     */
     public function setChapo($chapo)
     {
         if (is_string($chapo)) {
@@ -66,22 +110,39 @@ class Posts extends Model
         }
     }
 
+    /**
+     * @return string
+     */
     public function getContent()
     {
         return $this->content;
     }
-        public function setContent($content)
+
+
+    /**
+     * @param $content
+     */
+    public function setContent($content)
     {
         if (is_string($content)) {
             $this->content = nl2br(htmlspecialchars($content));
         }
     }
 
+    /**
+     * @param string $format
+     * @return string
+     */
     public function getCreatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->created_at->format($format);
     }
-        public function setCreatedAt($created_at)
+
+    /**
+     * @param $created_at
+     * @throws Exception
+     */
+    public function setCreatedAt($created_at)
     {
         if ($this->validateDate($created_at)) {
             $this->created_at = new DateTime($created_at);
@@ -90,10 +151,17 @@ class Posts extends Model
         }
     }
 
+    /**
+     * @return string
+     */
     public function getPicture()
     {
         return $this->picture;
     }
+
+    /**
+     * @param $picture
+     */
     public function setPicture($picture)
     {
         if (is_string($picture)) {
@@ -101,11 +169,20 @@ class Posts extends Model
         }
     }
 
+    /**
+     * @param string $format
+     * @return string
+     */
     public function getUpdatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->updated_at->format($format);
     }
-        public function setUpdatedAt($updated_at)
+
+    /**
+     * @param $updated_at
+     * @throws Exception
+     */
+    public function setUpdatedAt($updated_at)
     {
         if ($this->validateDate($updated_at)) {
             $this->updated_at = new DateTime($updated_at);
