@@ -1,25 +1,33 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    <section id="post">
-        <div class="card mb-3 p-1">
-            <img src="../public/img/composer.png" class="card-img-top" alt="Responsive image">
-            <div class="card-body">
-                <h3 class="card-title">
-                    <?= $post->getTitle(); ?>
-                </h3>
-                <p class="card-text text-justify">
-                    <?= $post->getChapo(); ?>
-                </p>
 
-                <p class="card-text">
-                <div class="d-inline font-italic text-secondary">
-                    <small>publié le <?= $post->getUpdatedAt(); ?></small>
+    <div class="row m-3 p-1">
+        <div class="col-12 text-center">
+            <h3 class="color-perso2">Retrouvez l'ensemble des articles</h3>
+        </div>
+    </div>
+
+    {% for post in posts %}
+
+    <section id="posts">
+        <div class="card m-3 p-1">
+            <div class="row g-0">
+                <div class="col-md-2 my-auto mx-auto">
+                    <img src="{{ post.picture }}" class="card-img-top" alt="Responsive image">
                 </div>
-                <a href="/" class="btn btn-light border d-line float-right">Lire la suite</a>
-                </p>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-justify">{{ post.chapo }}</p>
+                        <p class="card-text"><small class="text-muted">publié le {{ post.updatedAt }}</small></p>
+                        <a href="/" class="btn btn-light border d-line float-right">lire la suite</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    {% endfor %}
 
 {% endblock %}

@@ -14,6 +14,7 @@ class Post extends Model
     private $chapo;
     private $content;
     private $created_at;
+    private $picture;
     private $updated_at;
 
     public function getId()
@@ -86,6 +87,17 @@ class Post extends Model
             $this->created_at = new DateTime($created_at);
         } else {
             throw new Exception ('Date invalide !');
+        }
+    }
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+    public function setPicture($picture)
+    {
+        if (is_string($picture)) {
+            $this->picture = $picture;
         }
     }
 

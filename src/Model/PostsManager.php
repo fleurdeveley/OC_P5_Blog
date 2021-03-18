@@ -14,6 +14,7 @@ class PostManager extends Manager
         while($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $posts [] = new Post($data);
         }
+
         return $posts;
     }
 }
