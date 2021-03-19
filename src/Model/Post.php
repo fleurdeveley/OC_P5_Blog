@@ -6,8 +6,7 @@ use DateTime;
 use Exception;
 
 /**
- * Class Posts
- * represents a post entity
+ * Class Post
  */
 
 class Post extends Model
@@ -46,7 +45,6 @@ class Post extends Model
         return $this->category_id;
     }
 
-
     /**
      * @param $category_id
      */
@@ -54,7 +52,6 @@ class Post extends Model
     {
         $this->category_id = (int) $category_id;
     }
-
 
     /**
      * @return int
@@ -64,7 +61,6 @@ class Post extends Model
         return $this->user_id;
     }
 
-
     /**
      * @param $user_id
      */
@@ -72,7 +68,6 @@ class Post extends Model
     {
         $this->user_id = (int)$user_id;
     }
-
 
     /**
      * @return string
@@ -118,14 +113,13 @@ class Post extends Model
         return $this->content;
     }
 
-
     /**
      * @param $content
      */
     public function setContent($content)
     {
         if (is_string($content)) {
-            $this->content = nl2br(htmlspecialchars($content));
+            $this->content = $content;
         }
     }
 
