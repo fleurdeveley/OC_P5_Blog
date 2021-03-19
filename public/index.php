@@ -34,7 +34,7 @@ try {
 } catch(ResourceNotFoundException $e) {
     $response = new Response("La page demandée n'existe pas.", 404);
 } catch (Exception $e) {
-    $response = new Response("Une autre erreur est arrivée sur le serveur.", 500);
+    $response = new Response("Une autre erreur est arrivée sur le serveur. ::" . $e->getMessage(), 500);
 }
 
 $response->send();
