@@ -40,7 +40,7 @@ class Post extends Model
     /**
      * @return int
      */
-    public function getCategoryId()
+    public function getCategoryId(): int
     {
         return $this->category_id;
     }
@@ -56,7 +56,7 @@ class Post extends Model
     /**
      * @return int
      */
-    public function getUserId()
+    public function getUserId(): int
     {
         return $this->user_id;
     }
@@ -66,13 +66,13 @@ class Post extends Model
      */
     public function setUserId($user_id)
     {
-        $this->user_id = (int)$user_id;
+        $this->user_id = (int) $user_id;
     }
 
     /**
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -90,7 +90,7 @@ class Post extends Model
     /**
      * @return string
      */
-    public function getChapo()
+    public function getChapo(): string
     {
         return $this->chapo;
     }
@@ -108,7 +108,7 @@ class Post extends Model
     /**
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -127,7 +127,7 @@ class Post extends Model
      * @param string $format
      * @return string
      */
-    public function getCreatedAt($format = 'd-m-Y H:i:s')
+    public function getCreatedAt($format = 'd-m-Y H:i:s'): string
     {
         return $this->created_at->format($format);
     }
@@ -148,7 +148,7 @@ class Post extends Model
     /**
      * @return string
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->picture;
     }
@@ -167,7 +167,7 @@ class Post extends Model
      * @param string $format
      * @return string
      */
-    public function getUpdatedAt($format = 'd-m-Y H:i:s')
+    public function getUpdatedAt($format = 'd-m-Y H:i:s'): string
     {
         return $this->updated_at->format($format);
     }

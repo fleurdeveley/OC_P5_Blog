@@ -13,7 +13,8 @@ class PostsManager extends Manager
     /**
      * @return array
      */
-    public function all() {
+    public function all()
+    {
         $posts = [];
         $query = $this->db->query('SELECT * FROM post ORDER BY created_at');
         while($data = $query->fetch(PDO::FETCH_ASSOC)) {
