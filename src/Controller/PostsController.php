@@ -2,7 +2,8 @@
 
 namespace Blog\Controller;
 
-use \Blog\Model\PostsManager;
+use Blog\Model\CategoryManager;
+use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,26 +14,8 @@ use Twig\Error\SyntaxError;
 /**
  * Class PostsController
  */
-
 class PostsController extends Controller
 {
-    /**
-     * @var PostsManager
-     */
-    private $postsManager;
-    private $userManager;
-
-    /**
-     * PostsController constructor.
-     */
-    public function __construct()
-    {
-        $this->postsManager = new PostsManager();
-        $this->userManager = new UserManager();
-
-        parent::__construct();
-    }
-
     /**
      * @param Request $request
      * @return Response
@@ -42,7 +25,8 @@ class PostsController extends Controller
      */
     public function posts(Request $request): Response
     {
-        $posts = $this->postsManager->all();
+        $postsManager = new PostsManager();
+        $posts = $postsManager->all();
 
         return new Response($this->twig->render('Frontend/posts.twig', ['posts' => $posts]));
     }
@@ -57,24 +41,21 @@ class PostsController extends Controller
      */
     public function post(Request $request, $id): Response
     {
-        $post = $this->postsManager->one($id);
-        $user = $this->userManager->one($id);
+        $postsManager = new PostsManager();
+        $post = $postsManager->one($id);
 
-        return new Response($this->twig->render('Frontend/post.twig', ['post' => $post, 'user' => $user]));
-    }
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->one($post->getCategoryId());
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return Response
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
-    public function user(Request $request, $id): Response
-    {
+        $userManager = new UserManager();
+        $user = $userManager->one($post->getUserId());
 
-
-
+        return new Response($this->twig->render('Frontend/post.twig',
+            [
+                'post' => $post,
+                'user' => $user,
+                'category' => $category
+            ]
+        ));
     }
 }

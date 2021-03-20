@@ -14,6 +14,9 @@ class User extends Model
     private $email;
     private $password;
 
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
@@ -84,9 +87,9 @@ class User extends Model
     }
 
     /**
-     * @param mixed $password
+     * @param $password
      */
-    public function setPassword($password): void
+    public function setPassword($password)
     {
         $this->password = $password;
     }
