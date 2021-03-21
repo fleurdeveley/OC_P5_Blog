@@ -22,9 +22,9 @@ class Category extends Model
     /**
      * @param $id
      */
-    public function setId($id): void
+    public function setId($id)
     {
-        $this->id = $id;
+        $this->id = (int) $id;
     }
 
     /**
