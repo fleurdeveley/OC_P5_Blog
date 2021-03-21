@@ -3,6 +3,7 @@
 namespace Blog\Controller;
 
 use Blog\Model\CategoryManager;
+use Blog\Model\CommentsManager;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,14 +48,18 @@ class PostsController extends Controller
         $categoryManager = new CategoryManager();
         $category = $categoryManager->one($post->getCategoryId());
 
+        $commentManager = new CommentsManager();
+        $comments = $commentManager->all($post->getId());
+
         $userManager = new UserManager();
         $user = $userManager->one($post->getUserId());
 
         return new Response($this->twig->render('Frontend/post.twig',
             [
                 'post' => $post,
-                'user' => $user,
-                'category' => $category
+                'category' => $category,
+                'comments' => $comments,
+                'user' => $user
             ]
         ));
     }
