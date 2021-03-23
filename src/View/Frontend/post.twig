@@ -30,7 +30,7 @@
         <div class="m-3 p-2">
             <h4 class="color-perso2">Ajouter un commentaire</h4>
 
-            <form action="" method="post">
+            <form action="/add-comment/{{ post.id }}" method="post">
                 <div class="form-group">
                     <label for="author">Auteur</label>
                     <input type="text" id="author" name="author" class="form-control border-dark">
@@ -50,12 +50,12 @@
 
         {% for comment in comments %}
 
-            <div class="card mb-3 p-1">
-                <div class="card-body">
+            <div class="card mb-3">
+                <div class="card-body text-justify">
                     <span class="card-title color-perso1">{{ comment.author }}</span>
-                    <span class="card-subtitle mb-2 text-muted "><small>le {{ comment.updatedAt }}</small></span>
+                    <span class="card-subtitle mb-2 text-muted "><small>le {{ comment.createdAt }}</small></span>
                     <br />
-                    <span class="card-text text-justify">{{ comment.content }}</span>
+                    <span class="card-text">{{ comment.content }}</span>
                 </div>
             </div>
 

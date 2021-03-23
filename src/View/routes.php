@@ -17,4 +17,12 @@ $routes->add('post', new Route('/articles/{id}', [
     '_controller' => '\Blog\Controller\PostsController::post'
 ]));
 
+$routes->add('comment', new Route('/add-comment/{id}', [
+    '_controller' => '\Blog\Controller\CommentsController::addComment'
+]));
+/*
+$routes->add('login', new Route('/login', [
+    '_controller' => '\Blog\Controller\LoginController::login'
+]));*/
+
 return $routes;
