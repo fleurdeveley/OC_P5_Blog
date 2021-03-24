@@ -20,9 +20,9 @@ $routes->add('post', new Route('/articles/{id}', [
 $routes->add('comment', new Route('/add-comment/{id}', [
     '_controller' => '\Blog\Controller\CommentsController::addComment'
 ]));
-/*
-$routes->add('login', new Route('/login', [
+
+$routes->add('login', new Route('/administrateur', [
     '_controller' => '\Blog\Controller\LoginController::login'
-]));*/
+]));
 
 return $routes;
