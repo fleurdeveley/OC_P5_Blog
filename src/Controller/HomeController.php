@@ -4,18 +4,26 @@ namespace Blog\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Loader\FilesystemLoader;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
-class HomeController {
+/**
+ * Class HomeController
+ * return home view
+ */
 
-    public function home(Request $request) {
-
-        $loader = new FilesystemLoader('../src/View');
-        $twig = new \Twig\Environment($loader, [
-            'cache' => false,
-        ]);
-
-        return new Response($twig->render('Frontend/home.twig'));
+class HomeController extends Controller
+{
+    /**
+     * @param Request $request
+     * @return Response
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function home(Request $request): Response
+    {
+        return new Response($this->twig->render('Frontend/home.twig'));
     }
-
 }
