@@ -20,15 +20,15 @@ class Comment extends Model
     private $updated_at;
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param id
+     * @param $id
      */
     public function setId($id)
     {
@@ -36,9 +36,9 @@ class Comment extends Model
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getPostId(): int
+    public function getPostId()
     {
         return $this->post_id;
     }
@@ -52,9 +52,9 @@ class Comment extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -70,9 +70,9 @@ class Comment extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getAuthor(): string
+    public function getAuthor()
     {
         return $this->author;
     }
@@ -86,9 +86,9 @@ class Comment extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
