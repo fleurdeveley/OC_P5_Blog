@@ -2,6 +2,7 @@
 
 namespace Blog\Model;
 
+use Blog\Hydrator;
 use DateTime;
 
 /**
@@ -10,29 +11,15 @@ use DateTime;
 
 abstract class Model
 {
+    use Hydrator;
+
     /**
      * Model constructor.
      * @param array $data
      */
-    public function __construct(array $data)
+    public function __construct(array $data = [])
     {
         $this->hydrate($data);
-    }
-
-    /**
-     * @param array $data
-     */
-    protected function hydrate(array $data)
-    {
-        foreach ($data as $key => $value)
-        {
-            $key = str_replace('_', '', ucwords($key, '_'));
-            $method = 'set' . ucfirst($key);
-
-            if (method_exists($this, $method)) {
-                $this->$method($value);
-            }
-        }
     }
 
     /**
