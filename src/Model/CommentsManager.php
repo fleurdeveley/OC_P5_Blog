@@ -26,7 +26,12 @@ class CommentsManager extends Manager
         return $comments;
     }
 
-    public function postComment(Comment $comment)
+    /**
+     * @param Comment $comment
+     * @return bool
+     * @throws Exception
+     */
+    public function save(Comment $comment): bool
     {
         $query = $this->db->prepare('INSERT INTO comment (post_id, content, author, status, created_at, 
         updated_at) VALUES(?, ?, ?, "en cours de validation", NOW(), NOW())');

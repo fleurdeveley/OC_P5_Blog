@@ -2,14 +2,20 @@
 
 namespace Blog\Form\Field;
 
+/**
+ * Class TextareaField
+ */
+
 class TextareaField extends Field
 {
     protected $cols;
     protected $rows;
 
-    public function buildWidget()
+    /**
+     * @return string
+     */
+    public function buildWidget(): string
     {
-
         $widget = '<div class="form-group">';
 
         $widget .= '<label for="'.$this->name.'">'.$this->label.'</label>

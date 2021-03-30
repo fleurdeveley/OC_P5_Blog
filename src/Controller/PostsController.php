@@ -2,9 +2,8 @@
 
 namespace Blog\Controller;
 
-use Blog\Form\Field\TextareaField;
-use Blog\Form\Field\TextField;
-use Blog\Form\Form;
+use Blog\Form\FormBuilder\CommentFormBuilder;
+use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
 use Blog\Model\Comment;
 use Blog\Model\CommentsManager;
@@ -72,11 +71,15 @@ class PostsController extends Controller
             $comment = new Comment;
         }
 
-        $form = new Form($comment);
+        $formBuilder = new CommentFormBuilder($comment);
+        $formBuilder->build();
 
-        if ($request->getMethod() == 'POST'&& $form->isValid())
+        $form = $formBuilder->form();
+
+        $formHandler = new FormHandler($form, $commentManager, $request);
+
+        if($formHandler->process())
         {
-            $affectedLines = $commentManager->postComment($comment);
             $this->session->getFlashBag()->add('add-comment', 'Le commentaire a été envoyé avec succes !');
         }
 

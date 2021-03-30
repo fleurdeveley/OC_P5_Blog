@@ -8,7 +8,12 @@ use Blog\Form\Field\TextField;
 use Blog\Form\Validator\MaxLengthValidator;
 use Blog\Form\Validator\NotNullValidator;
 
-class CommentFormBuilder extends FormBuilder{
+/**
+ * Class CommentFormBuilder
+ */
+
+class CommentFormBuilder extends FormBuilder
+{
     public function build()
     {
         $this->form->add(new TextField([
@@ -16,7 +21,8 @@ class CommentFormBuilder extends FormBuilder{
             'name' => 'author',
             'maxLength' => 30,
             'validators' => [
-                new MaxLengthValidator('L\'auteur spécifié est trop long (30 caractères maximum.', 30),
+                new MaxLengthValidator('L\'auteur spécifié est trop long (30 caractères maximum.',
+                    30),
                 new NotNullValidator('Merci de saisir l\'auteur du commentaire.'),
             ],
         ]))

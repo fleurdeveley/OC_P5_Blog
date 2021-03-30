@@ -2,6 +2,10 @@
 
 namespace Blog\Form\Validator;
 
+/**
+ * Class MaxLengthValidator
+ */
+
 class MaxLengthValidator extends Validator
 {
     protected $maxLength;

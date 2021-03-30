@@ -5,6 +5,9 @@ namespace Blog\Form\Field;
 use Blog\Form\Validator\Validator;
 use Blog\Hydrator;
 
+/**
+ * Class Field
+ */
 abstract class Field
 {
     use Hydrator;
@@ -16,6 +19,10 @@ abstract class Field
     protected $validators = [];
     protected $value;
 
+    /**
+     * Field constructor.
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         if (!empty($options)) {
@@ -23,9 +30,12 @@ abstract class Field
         }
     }
 
+    /**
+     * @return mixed
+     */
     abstract public function buildWidget();
 
-    public function isValid()
+    public function isValid(): bool
     {
         foreach($this->validators as $validator) {
             if(!$validator->isValid($this->value)) {

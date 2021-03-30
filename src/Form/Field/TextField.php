@@ -2,11 +2,18 @@
 
 namespace Blog\Form\Field;
 
+/**
+ * Class TextField
+ */
+
 class TextField extends Field
 {
     protected $maxLength;
 
-    public function buildWidget()
+    /**
+     * @return string
+     */
+    public function buildWidget(): string
     {
 
         $widget = '<div class="form-group">';

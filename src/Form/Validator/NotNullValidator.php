@@ -2,9 +2,17 @@
 
 namespace Blog\Form\Validator;
 
+/**
+ * Class NotNullValidator
+ */
+
 class NotNullValidator extends Validator
 {
-    public function isValid($value)
+    /**
+     * @param $value
+     * @return bool
+     */
+    public function isValid($value): bool
     {
         return $value != '';
     }

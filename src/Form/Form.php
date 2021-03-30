@@ -65,9 +65,9 @@ class Form
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getModel(): string
+    public function getModel()
     {
         return $this->model;
     }
