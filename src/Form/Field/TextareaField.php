@@ -21,6 +21,11 @@ class TextareaField extends Field
 
         $widget .= '</textarea>';
 
+        if (!empty($this->errorMessage))
+        {
+            $widget .= '<div class="alert alert-danger">' . $this->errorMessage. '</div>';
+        }
+
         $widget .= '</div>';
 
         return $widget;

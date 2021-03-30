@@ -74,16 +74,6 @@ class PostsController extends Controller
 
         $form = new Form($comment);
 
-        $form->add(new TextField([
-            'label' => 'Auteur',
-            'name' => 'author',
-            'maxLength' => 30
-        ]))
-            ->add(new TextareaField([
-                'label' => 'Commentaire',
-                'name' => 'content'
-            ]));
-
         if ($request->getMethod() == 'POST'&& $form->isValid())
         {
             $affectedLines = $commentManager->postComment($comment);

@@ -2,6 +2,7 @@
 
 namespace Blog\Form\Field;
 
+use Blog\Form\Validator\Validator;
 use Blog\Hydrator;
 
 abstract class Field
@@ -10,7 +11,9 @@ abstract class Field
 
     protected $errorMessage;
     protected $label;
+    protected $length;
     protected $name;
+    protected $validators = [];
     protected $value;
 
     public function __construct(array $options = [])
@@ -24,7 +27,13 @@ abstract class Field
 
     public function isValid()
     {
-        /*écrire la méthode*/
+        foreach($this->validators as $validator) {
+            if(!$validator->isValid($this->value)) {
+                $this->errorMessage = $validator->errorMessage();
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -45,6 +54,26 @@ abstract class Field
     }
 
     /**
+     * @return mixed
+     */
+    public function getLength()
+    {
+        return $this->length;
+    }
+
+    /**
+     * @param $length
+     */
+    public function setLength($length)
+    {
+        $length = (int) $length;
+
+        if($length >0) {
+            $this->length = $length;
+        }
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -58,6 +87,23 @@ abstract class Field
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return array
+     */
+    public function getValidators()
+    {
+        return $this->validators;
+    }
+
+    public function setValidators(array $validators)
+    {
+        foreach($validators as $validator) {
+            if($validator instanceof Validator && !in_array($validator, $this->validators)){
+                $this->validators[] = $validator;
+            }
+        }
     }
 
     /**
