@@ -2,7 +2,6 @@
 
 namespace Blog\Form\FormBuilder;
 
-
 use Blog\Form\Field\TextareaField;
 use Blog\Form\Field\TextField;
 use Blog\Form\Validator\MaxLengthValidator;

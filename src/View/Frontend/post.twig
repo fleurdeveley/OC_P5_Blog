@@ -38,9 +38,11 @@
 
                 <button type="submit" class="btn bg-light border offset-10 col-2 p-1">Envoyer</button>
             </form>
+
             {% for message in session.flashbag.get('add-comment') %}
                 <div class="alert alert-success my-2">{{  message }}</div>
             {% endfor %}
+
         </div>
 
         <div class="m-3 p-1">

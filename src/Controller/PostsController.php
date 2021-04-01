@@ -58,16 +58,13 @@ class PostsController extends Controller
         $user = $userManager->one($post->getUserId());
 
 
-        if ($request->getMethod() == 'POST')
-        {
+        if($request->getMethod() == 'POST') {
             $comment = new Comment([
                 'post_id' => $id,
                 'author' => $request->request->get('author'),
                 'content' => $request->request->get('content')
             ]);
-        }
-        else
-        {
+        } else {
             $comment = new Comment;
         }
 
@@ -78,8 +75,7 @@ class PostsController extends Controller
 
         $formHandler = new FormHandler($form, $commentManager, $request);
 
-        if($formHandler->process())
-        {
+        if($formHandler->process()) {
             $this->session->getFlashBag()->add('add-comment', 'Le commentaire a été envoyé avec succes !');
         }
 
