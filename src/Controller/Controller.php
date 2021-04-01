@@ -2,6 +2,7 @@
 
 namespace Blog\Controller;
 
+use Symfony\Component\HttpFoundation\Session\Session;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -17,6 +18,11 @@ abstract class Controller
     protected $twig;
 
     /**
+     * @var Session
+     */
+    protected $session;
+
+    /**
      * Controller constructor.
      */
     public function __construct()
@@ -25,5 +31,9 @@ abstract class Controller
         $this->twig = new Environment($loader, [
             'cache' => false,
         ]);
+
+        $this->session = new Session();
+        $this->session->start();
+        $this->twig->addGlobal('session', $this->session);
     }
 }

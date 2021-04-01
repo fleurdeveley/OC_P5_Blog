@@ -2,6 +2,7 @@
 
 namespace Blog\Model;
 
+use Exception;
 use PDO;
 
 /**
@@ -25,11 +26,25 @@ class CommentsManager extends Manager
         return $comments;
     }
 
-    public function postComment($postId, $author, $content)
+    /**
+     * @param Comment $comment
+     * @return bool
+     * @throws Exception
+     */
+    public function save(Comment $comment): bool
     {
         $query = $this->db->prepare('INSERT INTO comment (post_id, content, author, status, created_at, 
         updated_at) VALUES(?, ?, ?, "en cours de validation", NOW(), NOW())');
-        $affectedLines = $query->execute([$postId, $content, $author]);
+        $affectedLines = $query->execute([
+            $comment->getPostId(),
+            $comment->getContent(),
+            $comment->getAuthor()
+        ]);
+
+        if ($affectedLines == false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
+
         return $affectedLines;
     }
 }

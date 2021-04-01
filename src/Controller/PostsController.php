@@ -2,7 +2,10 @@
 
 namespace Blog\Controller;
 
+use Blog\Form\FormBuilder\CommentFormBuilder;
+use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
+use Blog\Model\Comment;
 use Blog\Model\CommentsManager;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
@@ -54,12 +57,35 @@ class PostsController extends Controller
         $userManager = new UserManager();
         $user = $userManager->one($post->getUserId());
 
+
+        if($request->getMethod() == 'POST') {
+            $comment = new Comment([
+                'post_id' => $id,
+                'author' => $request->request->get('author'),
+                'content' => $request->request->get('content')
+            ]);
+        } else {
+            $comment = new Comment;
+        }
+
+        $formBuilder = new CommentFormBuilder($comment);
+        $formBuilder->build();
+
+        $form = $formBuilder->form();
+
+        $formHandler = new FormHandler($form, $commentManager, $request);
+
+        if($formHandler->process()) {
+            $this->session->getFlashBag()->add('add-comment', 'Le commentaire a été envoyé avec succes !');
+        }
+
         return new Response($this->twig->render('Frontend/post.twig',
             [
                 'post' => $post,
                 'category' => $category,
                 'comments' => $comments,
-                'user' => $user
+                'user' => $user,
+                'form' => $form->createView()
             ]
         ));
     }
