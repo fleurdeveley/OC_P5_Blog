@@ -17,7 +17,9 @@ use Twig\Error\SyntaxError;
 
 /**
  * Class PostsController
+ * return post view
  */
+
 class PostsController extends Controller
 {
     /**
