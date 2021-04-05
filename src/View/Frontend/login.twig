@@ -1,0 +1,53 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="login">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card border-color-perso2 m-3">
+                    <div class="card-header bg-perso3 text-center color-perso2">
+                        <h4>Connexion à l'administration</h4>
+                    </div>
+
+                    <div class="card-body text-justify">
+                        <form action="login" method="post" id="login">
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text bg-perso2 text-white">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                </div>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       placeholder="Email">
+                            </div>
+
+                            <div class="input-group mb-2 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text bg-perso2 text-white">
+                                        <i class="fas fa-unlock-alt"></i>
+                                    </div>
+                                </div>
+                                <input type="password" class="form-control" id="password" name="password"
+                                       placeholder="Mot de Passe">
+                            </div>
+
+                            <div class='text-center offset-8 col-4 p-1'>
+                                <button type="submit" class="btn bg-light border mb-2">
+                                    Me connecter
+                                </button>
+                                <a href="">Inscription</a>
+                            </div>
+                        </form>
+                    </div>
+
+                    {% for message in session.flashbag.get('error') %}
+                        <div class="alert alert-danger m-2">{{  message }}</div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

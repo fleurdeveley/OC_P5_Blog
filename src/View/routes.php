@@ -17,12 +17,16 @@ $routes->add('post', new Route('/articles/{id}', [
     '_controller' => '\Blog\Controller\PostsController::post'
 ]));
 
-$routes->add('comment', new Route('/add-comment/{id}', [
-    '_controller' => '\Blog\Controller\CommentsController::addComment'
+$routes->add('login', new Route('/login', [
+    '_controller' => '\Blog\Controller\LoginController::login'
 ]));
 
-$routes->add('login', new Route('/administrateur', [
-    '_controller' => '\Blog\Controller\LoginController::login'
+$routes->add('logout', new Route('/logout', [
+    '_controller' => '\Blog\Controller\LoginController::logout'
+]));
+
+$routes->add('administrator', new Route('/administrateur', [
+    '_controller' => '\Blog\Controller\AdministratorController::administrator'
 ]));
 
 return $routes;
