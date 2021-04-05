@@ -22,4 +22,17 @@ class UserManager extends Manager
 
         return new User($data);
     }
+
+    /**
+     * @param $email
+     * @return User
+     */
+    public function oneByEmail($email): User
+    {
+        $query = $this->db->prepare('SELECT * FROM user WHERE email = ?');
+        $query->execute([$email]);
+        $data = $query->fetch(PDO::FETCH_ASSOC);
+
+        return new User($data);
+    }
 }
