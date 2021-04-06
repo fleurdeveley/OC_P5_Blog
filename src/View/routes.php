@@ -29,4 +29,12 @@ $routes->add('administrator', new Route('/administrateur', [
     '_controller' => '\Blog\Controller\AdministratorController::administrator'
 ]));
 
+$routes->add('adminPost', new Route('/adminPost', [
+    '_controller' => '\Blog\Controller\PostsController::adminPost'
+]));
+
+/*$routes->add('editPost', new Route('/editPost', [
+    '_controller' => '\Blog\Controller\PostsController::editPost'
+]));*/
+
 return $routes;

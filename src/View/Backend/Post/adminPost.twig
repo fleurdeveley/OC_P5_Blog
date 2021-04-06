@@ -1,0 +1,73 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="adminpost">
+        <div class='row my-3'>
+            <div class="col-12">
+                <a href="#" class="btn btn-outline-success text-success mb-2 p-1">Ajouter un article</a>
+                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark ml-5 mb-2 p-1">
+                    Retour à l'accueil administration</a>
+            </div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bodered">
+                        <thead>
+                            <th class="table-active">#</th>
+                            <th class="table-active">Titre</th>
+                            <th class="table-active">Chapo</th>
+                            <th class="table-active" colspan=3>Modification</th>
+                            <th class="table-active"></th>
+                        </thead>
+
+                        {% for post in posts %}
+                            <tbody>
+                            <tr>
+                                <td>{{ post.id }}</td>
+                                <td>{{ post.title }}</td>
+                                <td>{{ post.chapo }}</td>
+                                <td>{{ post.updatedAt|date('d/m/Y') }}</td>
+                                <td><a href="/articles/{{ post.id }}" class="btn btn-outline-light p-1">Afficher</a></td>
+                                <td><a href="#-{{ post.id }}" class="btn btn-outline-warning text-warning p-1">
+                                        Modifier</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger p-1" data-toggle="modal"
+                                            data-target="#modal-{{ post.id }}">Supprimer</button>
+                                    <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="modal-{{ post.id }}-Label">
+                                                        Supprimer un article</h3>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Êtes-vous sûre de vouloir supprimer l'article {{ post.title }} ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        Annuler</button>
+                                                    <a class="btn btn-success" href="#-{{ post.title }}">
+                                                        Valider
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

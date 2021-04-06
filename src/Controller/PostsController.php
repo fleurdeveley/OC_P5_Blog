@@ -7,6 +7,7 @@ use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
 use Blog\Model\Comment;
 use Blog\Model\CommentsManager;
+use Blog\Model\Post;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -91,4 +92,20 @@ class PostsController extends Controller
             ]
         ));
     }
+
+    public function adminPost(Request $request): Response
+    {
+        $postsManager = new PostsManager();
+        $posts = $postsManager->all();
+
+        return new Response($this->twig->render('Backend/Post/adminPost.twig', ['posts' => $posts]));
+    }
+
+/*    public function editPost(Request $request, $id): Response
+    {
+        $postsManager = new PostsManager();
+        $post = $postsManager->one($id);
+
+        return new Response($this->twig->render('Backend/Post/editPost.twig', ['post' => $post]));
+    }*/
 }
