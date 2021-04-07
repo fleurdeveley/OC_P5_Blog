@@ -1,0 +1,22 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <div class="row m-3 p-1">
+        <div class="col-12 text-center">
+            <h4 class="text-perso2 color-perso2">Modifier l'article "{{ post.title }}"</h4>
+        </div>
+    </div>
+
+    <section id="editPost">
+        <form action="/editpost/{{ post.id }}" method="post">
+
+            {{ form|raw }}
+
+            <button type="submit" class="btn btn-outline-warning offset-10 col-2 mb-3 p-1">
+                Modifier
+            </button>
+        </form>
+    </section>
+
+{% endblock %}

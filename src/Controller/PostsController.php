@@ -3,6 +3,7 @@
 namespace Blog\Controller;
 
 use Blog\Form\FormBuilder\CommentFormBuilder;
+use Blog\Form\FormBuilder\EditPostFormBuilder;
 use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
 use Blog\Model\Comment;
@@ -10,6 +11,7 @@ use Blog\Model\CommentsManager;
 use Blog\Model\Post;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Error\LoaderError;
@@ -93,6 +95,13 @@ class PostsController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
     public function adminPost(Request $request): Response
     {
         $postsManager = new PostsManager();
@@ -101,11 +110,46 @@ class PostsController extends Controller
         return new Response($this->twig->render('Backend/Post/adminPost.twig', ['posts' => $posts]));
     }
 
-/*    public function editPost(Request $request, $id): Response
+    /**
+     * @param Request $request
+     * @param $id
+     * @return Response
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function editPost(Request $request, $id): Response
     {
         $postsManager = new PostsManager();
         $post = $postsManager->one($id);
 
-        return new Response($this->twig->render('Backend/Post/editPost.twig', ['post' => $post]));
-    }*/
+        if($request->getMethod() == 'POST') {
+            $post = new Post([
+                'id' => $id,
+                'title' => $request->request->get('title'),
+                'chapo' => $request->request->get('chapo'),
+                'content' => $request->request->get('content'),
+                'picture' => $request->request->get('picture')
+            ]);
+        } else {
+            $post = $postsManager->one($id);
+        }
+
+        $formBuilder = new EditPostFormBuilder($post);
+        $formBuilder->build();
+
+        $form = $formBuilder->form();
+
+        $formHandler = new FormHandler($form, $postsManager, $request);
+
+        if($formHandler->process()) {
+            return new RedirectResponse('/adminpost');
+        }
+
+        return new Response($this->twig->render('Backend/Post/editPost.twig',
+            [
+                'post' => $post,
+                'form' => $form->createView()
+            ]));
+    }
 }
