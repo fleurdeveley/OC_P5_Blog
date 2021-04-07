@@ -22,9 +22,9 @@ class Post extends Model
     private $updated_at;
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -38,9 +38,9 @@ class Post extends Model
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getCategoryId(): int
+    public function getCategoryId()
     {
         return $this->category_id;
     }
@@ -54,9 +54,9 @@ class Post extends Model
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getUserId(): int
+    public function getUserId()
     {
         return $this->user_id;
     }
@@ -70,9 +70,9 @@ class Post extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -88,9 +88,9 @@ class Post extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getChapo(): string
+    public function getChapo()
     {
         return $this->chapo;
     }
@@ -106,9 +106,9 @@ class Post extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
@@ -125,9 +125,9 @@ class Post extends Model
 
     /**
      * @param string $format
-     * @return string
+     * @return mixed
      */
-    public function getCreatedAt($format = 'd-m-Y H:i:s'): string
+    public function getCreatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->created_at->format($format);
     }
@@ -146,9 +146,9 @@ class Post extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getPicture(): string
+    public function getPicture()
     {
         return $this->picture;
     }
@@ -165,9 +165,9 @@ class Post extends Model
 
     /**
      * @param string $format
-     * @return string
+     * @return mixed
      */
-    public function getUpdatedAt($format = 'd-m-Y H:i:s'): string
+    public function getUpdatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->updated_at->format($format);
     }

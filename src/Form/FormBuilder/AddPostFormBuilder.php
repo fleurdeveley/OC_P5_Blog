@@ -7,13 +7,16 @@ use Blog\Form\Field\TextField;
 use Blog\Form\Validator\NotNullValidator;
 
 /**
- * Class EditPostFormBuilder
+ * Class AddPostFormBuilder
  */
 
-class EditPostFormBuilder extends FormBuilder
+class AddPostFormBuilder extends FormBuilder
 {
     public function build()
     {
+        //add category avec un selectfield
+        //add user avec récupération de l'id stocké dans la session
+
         $this->form->add(new TextField([
             'label' => 'Titre',
             'name' => 'title',

@@ -2,6 +2,7 @@
 
 namespace Blog\Controller;
 
+use Blog\Form\FormBuilder\AddPostFormBuilder;
 use Blog\Form\FormBuilder\CommentFormBuilder;
 use Blog\Form\FormBuilder\EditPostFormBuilder;
 use Blog\Form\FormHandler;
@@ -147,6 +148,46 @@ class PostsController extends Controller
         }
 
         return new Response($this->twig->render('Backend/Post/editPost.twig',
+            [
+                'post' => $post,
+                'form' => $form->createView()
+            ]));
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function addPost(Request $request): Response
+    {
+        $postsManager = new PostsManager();
+
+        if($request->getMethod() == 'POST') {
+            $post = new Post([
+                'title' => $request->request->get('title'),
+                'chapo' => $request->request->get('chapo'),
+                'content' => $request->request->get('content'),
+                'picture' => $request->request->get('picture')
+            ]);
+        } else {
+            $post = new Post();
+        }
+
+        $formBuilder = new AddPostFormBuilder($post);
+        $formBuilder->build();
+
+        $form = $formBuilder->form();
+
+        $formHandler = new FormHandler($form, $postsManager, $request);
+
+        if($formHandler->process()) {
+            return new RedirectResponse('/adminpost');
+        }
+
+        return new Response($this->twig->render('Backend/Post/addPost.twig',
             [
                 'post' => $post,
                 'form' => $form->createView()

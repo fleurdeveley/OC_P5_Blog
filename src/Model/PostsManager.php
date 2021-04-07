@@ -44,14 +44,22 @@ class PostsManager extends Manager
     public function save(Post $post): bool
     {
        //récupérer lid du post puis faire un if
-        return $this->update($post);
-
+        if($post->getId()) {
+            return $this->update($post);
+        } else {
+            return $this->create($post);
+        }
     }
 
-    protected function update(Post $post)
+    /**
+     * @param Post $post
+     * @return bool
+     * @throws Exception
+     */
+    protected function update(Post $post): bool
     {
         $query = $this->db->prepare('UPDATE post SET title=?, chapo=?, content=?, updated_at=NOW(), 
-                picture=? WHERE id = ?');
+                 picture=? WHERE id = ?');
         $affectedLines = $query->execute([
             $post->getTitle(),
             $post->getChapo(),
@@ -67,8 +75,26 @@ class PostsManager extends Manager
         return $affectedLines;
     }
 
-    protected function create(Post $post)
+    /**
+     * @param Post $post
+     * @return bool
+     * @throws Exception
+     */
+    protected function create(Post $post): bool
     {
+        $query = $this->db->prepare('INSERT INTO post (title, chapo, content, created_at, picture) 
+            VALUES(?, ?, ?, NOW(), ?');
+        $affectedLines = $query->execute([
+            $post->getTitle(),
+            $post->getChapo(),
+            $post->getContent(),
+            $post->getPicture()
+        ]);
 
+        if ($affectedLines == false) {
+            throw new Exception('Impossible d\'insérer l\'article !');
+        }
+
+        return $affectedLines;
     }
 }

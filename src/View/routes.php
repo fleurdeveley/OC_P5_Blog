@@ -37,4 +37,8 @@ $routes->add('editPost', new Route('/editpost/{id}', [
     '_controller' => '\Blog\Controller\PostsController::editPost'
 ]));
 
+$routes->add('addPost', new Route('/addpost', [
+    '_controller' => '\Blog\Controller\PostsController::addPost'
+]));
+
 return $routes;
