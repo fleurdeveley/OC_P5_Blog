@@ -193,4 +193,18 @@ class PostsController extends Controller
                 'form' => $form->createView()
             ]));
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return Response
+     * @throws \Exception
+     */
+    public function deletePost(Request $request, $id): Response
+    {
+        $postsManager = new PostsManager();
+        $post = $postsManager->delete($id);
+
+        return new RedirectResponse('/adminpost');
+    }
 }

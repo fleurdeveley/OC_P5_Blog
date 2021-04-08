@@ -82,8 +82,8 @@ class PostsManager extends Manager
      */
     protected function create(Post $post): bool
     {
-        $query = $this->db->prepare('INSERT INTO post (title, chapo, content, created_at, picture) 
-            VALUES(?, ?, ?, NOW(), ?');
+        $query = $this->db->prepare('INSERT INTO post (title, chapo, content, created_at, updated_at, picture) 
+                 VALUES(?, ?, ?, NOW(), NOW(), ?');
         $affectedLines = $query->execute([
             $post->getTitle(),
             $post->getChapo(),
@@ -93,6 +93,23 @@ class PostsManager extends Manager
 
         if ($affectedLines == false) {
             throw new Exception('Impossible d\'insérer l\'article !');
+        }
+
+        return $affectedLines;
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     * @throws Exception
+     */
+    public function delete($id): bool
+    {
+        $query = $this->db->prepare('DELETE FROM post WHERE id = ?');
+        $affectedLines = $query->execute([$id]);
+
+        if ($affectedLines == false) {
+            throw new Exception('Impossible de supprimer l\'article !');
         }
 
         return $affectedLines;

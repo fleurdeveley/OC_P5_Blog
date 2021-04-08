@@ -41,4 +41,8 @@ $routes->add('addPost', new Route('/addpost', [
     '_controller' => '\Blog\Controller\PostsController::addPost'
 ]));
 
+$routes->add('deletePost', new Route('/deletepost/{id}', [
+    '_controller' => '\Blog\Controller\PostsController::deletePost'
+]));
+
 return $routes;

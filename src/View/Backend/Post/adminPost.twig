@@ -28,12 +28,14 @@
                                 <td>{{ post.title }}</td>
                                 <td>{{ post.chapo }}</td>
                                 <td>{{ post.updatedAt|date('d/m/Y') }}</td>
-                                <td><a href="/articles/{{ post.id }}" class="btn btn-outline-light p-2">Afficher</a></td>
+                                <td><a href="/articles/{{ post.id }}" class="btn btn-outline-light p-2">Afficher</a>
+                                </td>
                                 <td><a href="/editpost/{{ post.id }}" class="btn btn-outline-warning text-warning p-2">
                                         Modifier</a></td>
                                 <td>
                                     <button type="button" class="btn btn-outline-danger p-2" data-toggle="modal"
-                                            data-target="#modal-{{ post.id }}">Supprimer</button>
+                                            data-target="#modal-{{ post.id }}">Supprimer
+                                    </button>
                                     <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -50,9 +52,12 @@
                                                     Êtes-vous sûre de vouloir supprimer l'article {{ post.title }} ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                        Annuler</button>
-                                                    <a class="btn btn-success" href="#-{{ post.title }}">
+                                                    <button type="button" class="btn btn-outline-danger p-2"
+                                                            data-dismiss="modal">
+                                                        Annuler
+                                                    </button>
+                                                    <a class="btn btn-outline-success text-success p-2"
+                                                       href="/deletepost/{{ post.id }}">
                                                         Valider
                                                     </a>
                                                 </div>
