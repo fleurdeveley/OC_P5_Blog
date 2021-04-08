@@ -48,18 +48,18 @@
         <div class="m-3 p-1">
             <h4 class="color-perso2">Commentaires</h4>
 
-        {% for comment in comments %}
+            {% for comment in comments %}
 
-            <div class="card mb-3">
-                <div class="card-body text-justify">
-                    <span class="card-title color-perso1">{{ comment.author }}</span>
-                    <span class="card-subtitle mb-2 text-muted "><small>le {{ comment.createdAt }}</small></span>
-                    <br />
-                    <span class="card-text">{{ comment.content }}</span>
+                <div class="card mb-3">
+                    <div class="card-body text-justify">
+                        <span class="card-title color-perso1">{{ comment.author }}</span>
+                        <span class="card-subtitle mb-2 text-muted "><small>le {{ comment.createdAt }}</small></span>
+                        <br/>
+                        <span class="card-text">{{ comment.content }}</span>
+                    </div>
                 </div>
-            </div>
 
-        {% endfor %}
+            {% endfor %}
 
         </div>
     </section>

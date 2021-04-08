@@ -18,7 +18,8 @@ class CommentsManager extends Manager
     public function all($id): array
     {
         $comments = [];
-        $query = $this->db->prepare('SELECT * FROM comment WHERE post_id = ? AND status = "validé" ORDER BY created_at');
+        $query = $this->db->prepare('SELECT * FROM comment WHERE post_id = ? AND status = "validé" 
+                 ORDER BY created_at');
         $query->execute([$id]);
         while($data = $query->fetch(PDO::FETCH_ASSOC)) {
             $comments[] = new Comment($data);
