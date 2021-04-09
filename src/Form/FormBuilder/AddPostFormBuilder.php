@@ -2,9 +2,11 @@
 
 namespace Blog\Form\FormBuilder;
 
+use Blog\Form\Field\SelectField;
 use Blog\Form\Field\TextareaField;
 use Blog\Form\Field\TextField;
 use Blog\Form\Validator\NotNullValidator;
+use Blog\Model\Model;
 
 /**
  * Class AddPostFormBuilder
@@ -12,37 +14,54 @@ use Blog\Form\Validator\NotNullValidator;
 
 class AddPostFormBuilder extends FormBuilder
 {
+
+    protected $categories;
+
+    public function __construct(Model $model, array $categories)
+    {
+        $this->categories = $categories;
+
+        parent::__construct($model);
+    }
+
     public function build()
     {
-        //add category avec un selectfield
         //add user avec récupération de l'id stocké dans la session
 
         $this->form->add(new TextField([
             'label' => 'Titre',
             'name' => 'title',
             'validators' => [
-                new NotNullValidator('Merci de modifier le titre.'),
+                new NotNullValidator('Merci de saisir un titre.'),
             ],
         ]))
+            ->add(new SelectField([
+                'label' => 'Catégorie',
+                'name' => 'category_id',
+                'options' => $this->categories,
+                'validators' => [
+                    new NotNullValidator('Merci de sélection une catégorie.')
+                ]
+            ]))
             ->add(new TextareaField([
                 'label' => 'Chapo',
                 'name' => 'chapo',
                 'validators' => [
-                    new NotNullValidator('Merci de modifier résumé.')
+                    new NotNullValidator('Merci de saisir un résumé.')
                 ]
             ]))
             ->add(new TextareaField([
                 'label' => 'Contenu',
                 'name' => 'content',
                 'validators' => [
-                    new NotNullValidator('Merci de modifier le contenu.')
+                    new NotNullValidator('Merci de saisir un contenu.')
                 ]
             ]))
             ->add(new TextField([
                 'label' => 'Image',
                 'name' => 'picture',
                 'validators' => [
-                    new NotNullValidator('Merci de modifier la picture.')
+                    new NotNullValidator('Merci de saisir une picture.')
                 ]
             ]));
     }

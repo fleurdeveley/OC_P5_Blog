@@ -23,8 +23,8 @@
                         </div>
                         <p class="card-text text-justify">{{ post.content|raw|nl2br }}</p>
                         <p class="card-subtitle mb-2 text-muted">Auteur : {{ user.firstname }} {{ user.lastname }}</p>
-                        <a href="/articles" class="btn bg-light border offset-9 col-3 p-1">
-                            retour à la liste des articles</a>
+                        <a href="/articles" class="btn bg-light border offset-8 col-4 p-2">
+                            Retour à la liste des articles</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
             <form action="/articles/{{ post.id }}" method="post">
                 {{ form|raw }}
 
-                <button type="submit" class="btn bg-light border offset-10 col-2 p-1">Envoyer</button>
+                <button type="submit" class="btn bg-light border offset-10 col-2 p-2">Envoyer</button>
             </form>
 
             {% for message in session.flashbag.get('add-comment') %}

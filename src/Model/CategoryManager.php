@@ -10,6 +10,20 @@ use PDO;
 
 class CategoryManager extends Manager
 {
+
+    /**
+     * @return array
+     */
+    public function all(): array
+    {
+        $categories = [];
+        $query = $this->db->query('SELECT * FROM category');
+        while($data = $query->fetch(PDO::FETCH_ASSOC)) {
+            $categories[] = new Category($data);
+        }
+        return $categories;
+    }
+
     /**
      * @param $id
      * @return Category

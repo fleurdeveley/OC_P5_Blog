@@ -30,6 +30,7 @@ class Form
     public function add(Field $field): Form
     {
         $attr = $field->getName();
+        $attr = str_replace('_', '', ucwords($attr, '_'));
         $method = 'get'.ucfirst($attr);
         $field->setValue($this->model->$method());
 
