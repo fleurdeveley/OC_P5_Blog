@@ -33,6 +33,10 @@ $routes->add('adminPost', new Route('/adminpost', [
     '_controller' => '\Blog\Controller\PostsController::adminPost'
 ]));
 
+$routes->add('readPost', new Route('/readpost/{id}', [
+    '_controller' => '\Blog\Controller\PostsController::readPost'
+]));
+
 $routes->add('editPost', new Route('/editpost/{id}', [
     '_controller' => '\Blog\Controller\PostsController::editPost'
 ]));

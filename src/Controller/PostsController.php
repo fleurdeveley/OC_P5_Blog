@@ -63,7 +63,6 @@ class PostsController extends Controller
         $userManager = new UserManager();
         $user = $userManager->one($post->getUserId());
 
-
         if($request->getMethod() == 'POST') {
             $comment = new Comment([
                 'post_id' => $id,
@@ -119,6 +118,34 @@ class PostsController extends Controller
      * @throws RuntimeError
      * @throws SyntaxError
      */
+    public function readPost(Request $request, $id): Response
+    {
+        $postsManager = new PostsManager();
+        $post = $postsManager->one($id);
+
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->one($post->getCategoryId());
+
+        $userManager = new UserManager();
+        $user = $userManager->one($post->getUserId());
+
+        return new Response($this->twig->render('Backend/Post/readPost.twig',
+            [
+                'post' => $post,
+                'category' => $category,
+                'user' => $user
+            ]
+        ));
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return Response
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
     public function editPost(Request $request, $id): Response
     {
         $postsManager = new PostsManager();
@@ -164,6 +191,7 @@ class PostsController extends Controller
     public function addPost(Request $request): Response
     {
         $postsManager = new PostsManager();
+        $categoriesManager = new CategoryManager();
 
         if($request->getMethod() == 'POST') {
             $post = new Post([
@@ -176,7 +204,13 @@ class PostsController extends Controller
             $post = new Post();
         }
 
-        $formBuilder = new AddPostFormBuilder($post);
+        $categories = $categoriesManager->all();
+
+        foreach($categories as $category) {
+            $options[$category->getId()] = $category->getName();
+        }
+
+        $formBuilder = new AddPostFormBuilder($post, $options);
         $formBuilder->build();
 
         $form = $formBuilder->form();
