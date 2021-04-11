@@ -2,13 +2,13 @@
 
 {% block content %}
 
-    <div class="row m-3 p-1">
-        <div class="col-12 text-center">
-            <h3 class="text-perso2 color-perso2">Créer un article</h3>
-        </div>
-    </div>
-
     <section id="addpost">
+        <div class="row m-3 p-1">
+            <div class="col-12 text-center">
+                <h3 class="text-perso2 color-perso2">Créer un article</h3>
+            </div>
+        </div>
+
         <form action="/addpost" method="post">
 
             {{ form|raw }}

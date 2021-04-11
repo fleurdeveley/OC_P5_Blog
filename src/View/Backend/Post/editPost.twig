@@ -2,13 +2,15 @@
 
 {% block content %}
 
-    <div class="row m-3 p-1">
-        <div class="col-12 text-center">
-            <h4 class="text-perso2 color-perso2">Modifier l'article "{{ post.title }}"</h4>
-        </div>
-    </div>
+
 
     <section id="editpost">
+        <div class="row m-3 p-1">
+            <div class="col-12 text-center">
+                <h4 class="text-perso2 color-perso2">Modifier l'article "{{ post.title }}"</h4>
+            </div>
+        </div>
+
         <form action="/editpost/{{ post.id }}" method="post">
 
             {{ form|raw }}
