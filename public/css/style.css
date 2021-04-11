@@ -1,5 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
+    color: #212529 !important;
 }
 
 h2, h4 {
@@ -41,4 +42,28 @@ a {
 
 #home .card {
     min-height: 150px !important;
+}
+
+.grow-wrap {
+    display: grid;
+}
+
+.grow-wrap::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+}
+
+.grow-wrap > textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+.grow-wrap > textarea,
+.grow-wrap::after {
+    border: 1px solid black;
+    padding: 0.5rem;
+    font: inherit;
+
+    grid-area: 1 / 1 / 2 / 2;
 }
