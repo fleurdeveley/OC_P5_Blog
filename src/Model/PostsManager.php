@@ -58,10 +58,11 @@ class PostsManager extends Manager
      */
     protected function update(Post $post): bool
     {
-        $query = $this->db->prepare('UPDATE post SET title=?, chapo=?, content=?, updated_at=NOW(), 
+        $query = $this->db->prepare('UPDATE post SET title=?, category_id=?, chapo=?, content=?, updated_at=NOW(), 
                  picture=? WHERE id = ?');
         $affectedLines = $query->execute([
             $post->getTitle(),
+            $post->getCategoryId(),
             $post->getChapo(),
             $post->getContent(),
             $post->getPicture(),
@@ -82,10 +83,13 @@ class PostsManager extends Manager
      */
     protected function create(Post $post): bool
     {
-        $query = $this->db->prepare('INSERT INTO post (title, chapo, content, created_at, updated_at, picture) 
-                 VALUES(?, ?, ?, NOW(), NOW(), ?');
+        $query = $this->db->prepare('INSERT INTO post (title, category_id, user_id, chapo, content, created_at, 
+                updated_at, picture) VALUES (?, ?, ?, ?, ?, NOW(), NOW(), ?)');
+
         $affectedLines = $query->execute([
             $post->getTitle(),
+            $post->getCategoryId(),
+            $post->getUserId(),
             $post->getChapo(),
             $post->getContent(),
             $post->getPicture()

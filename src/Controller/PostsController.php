@@ -9,6 +9,7 @@ use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
 use Blog\Model\Comment;
 use Blog\Model\CommentsManager;
+use Blog\Model\Manager;
 use Blog\Model\Post;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
@@ -150,11 +151,14 @@ class PostsController extends Controller
     {
         $postsManager = new PostsManager();
         $post = $postsManager->one($id);
+        $categoriesManager = new CategoryManager();
+
 
         if($request->getMethod() == 'POST') {
             $post = new Post([
                 'id' => $id,
                 'title' => $request->request->get('title'),
+                'category_id' => $request->request->get('category_id'),
                 'chapo' => $request->request->get('chapo'),
                 'content' => $request->request->get('content'),
                 'picture' => $request->request->get('picture')
@@ -163,7 +167,13 @@ class PostsController extends Controller
             $post = $postsManager->one($id);
         }
 
-        $formBuilder = new EditPostFormBuilder($post);
+        $categories = $categoriesManager->all();
+
+        foreach($categories as $category) {
+            $options[$category->getId()] = $category->getName();
+        }
+
+        $formBuilder = new EditPostFormBuilder($post, $options);
         $formBuilder->build();
 
         $form = $formBuilder->form();
@@ -196,12 +206,14 @@ class PostsController extends Controller
         if($request->getMethod() == 'POST') {
             $post = new Post([
                 'title' => $request->request->get('title'),
+                'category_id' => $request->request->get('category_id'),
+                'user_id' => $this->session->get('user_id'),
                 'chapo' => $request->request->get('chapo'),
                 'content' => $request->request->get('content'),
                 'picture' => $request->request->get('picture')
             ]);
         } else {
-            $post = new Post();
+            $post = new Post(['user_id' => $this->session->get('user_id')]);
         }
 
         $categories = $categoriesManager->all();

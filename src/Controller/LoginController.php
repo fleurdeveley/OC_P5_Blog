@@ -36,6 +36,7 @@ class LoginController extends Controller
 
             if($email == $user->getEmail() && $password == $user->getPassword()){
                 $this->session->set('auth', true);
+                $this->session->set('user_id', $user->getId());
 
                 return new RedirectResponse('administrateur');
             } else {

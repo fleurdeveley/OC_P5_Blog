@@ -5,6 +5,7 @@ namespace Blog\Form\FormBuilder;
 use Blog\Form\Field\SelectField;
 use Blog\Form\Field\TextareaField;
 use Blog\Form\Field\TextField;
+use Blog\Form\Validator\MaxLengthValidator;
 use Blog\Form\Validator\NotNullValidator;
 use Blog\Model\Model;
 
@@ -26,8 +27,6 @@ class AddPostFormBuilder extends FormBuilder
 
     public function build()
     {
-        //add user avec récupération de l'id stocké dans la session
-
         $this->form->add(new TextField([
             'label' => 'Titre',
             'name' => 'title',
@@ -46,8 +45,11 @@ class AddPostFormBuilder extends FormBuilder
             ->add(new TextareaField([
                 'label' => 'Chapo',
                 'name' => 'chapo',
+                'maxLength' => 255,
                 'validators' => [
-                    new NotNullValidator('Merci de saisir un résumé.')
+                    new NotNullValidator('Merci de saisir un résumé.'),
+                    new MaxLengthValidator('Le résumé est trop long : 255 caractères maximum.',
+                        255)
                 ]
             ]))
             ->add(new TextareaField([
