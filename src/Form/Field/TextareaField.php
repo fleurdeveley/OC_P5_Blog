@@ -19,16 +19,13 @@ class TextareaField extends Field
         $widget = '<div class="form-group">';
 
         $widget .= '<label for="'.$this->name.'">'.$this->label.'</label>
-                    <div class="grow-wrap">
-                        <textarea name="'.$this->name.'" id="'.$this->name.'" class="form-control border-secondary
-                        text-justify" 
-                        onInput="this.parentNode.dataset.replicatedValue = this.value">';
+                    <span name="'.$this->name.'" id="'.$this->name.'"class="textarea" role="textbox" contenteditable>';
 
         if(!empty($this->value)) {
             $widget .= htmlspecialchars($this->value);
         }
 
-        $widget .= '</textarea> </div>';
+        $widget .= '</span>';
 
         if (!empty($this->errorMessage))
         {
