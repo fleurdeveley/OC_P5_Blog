@@ -1,0 +1,50 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="adminpost">
+        <div class='row my-3'>
+            <div class="col-12 text-center my-3">
+                <h2>Les commentaires</h2>
+            </div>
+
+            <div class="col-12">
+                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark mb-2 p-2">
+                    Retour à l'accueil administration</a>
+            </div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bodered">
+                        <thead>
+                            <th class="table-active">#</th>
+                            <th class="table-active">Auteur</th>
+                            <th class="table-active">Contenu</th>
+                            <th class="table-active" colspan=3>Modifié le</th>
+                            <th class="table-active"></th>
+                        </thead>
+
+                        {% for comment in comments %}
+                            <tbody>
+                                <tr class="text-justify">
+                                    <td>{{ comment.id }}</td>
+                                    <td>{{ comment.author }}</td>
+                                    <td>{{ comment.content }}</td>
+                                    <td>{{ comment.updatedAt|date('d/m/Y') }}</td>
+                                    <td>
+                                        <a href="/validatecomment/{{ comment.id }}" class="btn btn-outline-success text-success p-2">Valider</a>
+                                    </td>
+                                    <td>
+                                        <a href="/refusecomment/{{ comment.id }}" class="btn btn-outline-danger text-danger p-2">Refuser</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

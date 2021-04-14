@@ -53,4 +53,16 @@ $routes->add('deletePost', new Route('/deletepost/{id}', [
     '_controller' => '\Blog\Controller\PostsController::deletePost'
 ]));
 
+$routes->add('adminComment', new Route('/admincomment', [
+    '_controller' => '\Blog\Controller\CommentsController::adminComment'
+]));
+
+$routes->add('refuseComment', new Route('/refusecomment/{id}', [
+    '_controller' => '\Blog\Controller\CommentsController::refuseComment'
+]));
+
+$routes->add('validateComment', new Route('/validatecomment/{id}', [
+    '_controller' => '\Blog\Controller\CommentsController::validateComment'
+]));
+
 return $routes;

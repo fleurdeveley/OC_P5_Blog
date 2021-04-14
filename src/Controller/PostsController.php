@@ -81,7 +81,8 @@ class PostsController extends Controller
         $formHandler = new FormHandler($form, $commentManager, $request);
 
         if($formHandler->process()) {
-            $this->session->getFlashBag()->add('add-comment', 'Le commentaire a été envoyé avec succes !');
+            $this->session->getFlashBag()->add('add-comment', 'Le commentaire a été envoyé avec succes !
+            ');
         }
 
         return new Response($this->twig->render('Frontend/post.twig',
