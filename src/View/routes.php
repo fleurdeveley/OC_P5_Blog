@@ -21,6 +21,10 @@ $routes->add('login', new Route('/login', [
     '_controller' => '\Blog\Controller\LoginController::login'
 ]));
 
+$routes->add('register', new Route('/register', [
+    '_controller' => '\Blog\Controller\LoginController::register'
+]));
+
 $routes->add('logout', new Route('/logout', [
     '_controller' => '\Blog\Controller\LoginController::logout'
 ]));

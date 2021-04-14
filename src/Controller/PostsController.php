@@ -9,7 +9,6 @@ use Blog\Form\FormHandler;
 use Blog\Model\CategoryManager;
 use Blog\Model\Comment;
 use Blog\Model\CommentsManager;
-use Blog\Model\Manager;
 use Blog\Model\Post;
 use Blog\Model\PostsManager;
 use Blog\Model\UserManager;
@@ -151,8 +150,8 @@ class PostsController extends Controller
     {
         $postsManager = new PostsManager();
         $post = $postsManager->one($id);
-        $categoriesManager = new CategoryManager();
 
+        $categoriesManager = new CategoryManager();
 
         if($request->getMethod() == 'POST') {
             $post = new Post([

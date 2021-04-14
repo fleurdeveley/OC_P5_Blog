@@ -1,16 +1,15 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-
-    <div class="row m-3 p-1">
-        <div class="col-12 text-center">
-            <h2 class="text-perso2 color-perso2">Retrouvez l'ensemble des articles</h2>
+    <section id="posts">
+        <div class="row m-3 p-1">
+            <div class="col-12 text-center">
+                <h2 class="text-perso2 color-perso2">Retrouvez l'ensemble des articles</h2>
+            </div>
         </div>
-    </div>
 
-    {% for post in posts %}
+        {% for post in posts %}
 
-        <section id="posts">
             <div class="card m-3 p-1">
                 <div class="row g-0">
                     <div class="col-md-2 my-auto mx-auto">
@@ -29,8 +28,9 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-    {% endfor %}
+        {% endfor %}
+
+    </section>
 
 {% endblock %}

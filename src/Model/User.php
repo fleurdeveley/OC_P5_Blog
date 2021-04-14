@@ -15,9 +15,9 @@ class User extends Model
     private $password;
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
@@ -31,9 +31,9 @@ class User extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getFirstname(): string
+    public function getFirstname()
     {
         return $this->firstname;
     }
@@ -47,9 +47,9 @@ class User extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getLastname(): string
+    public function getLastname()
     {
         return $this->lastname;
     }
@@ -63,9 +63,9 @@ class User extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -79,9 +79,9 @@ class User extends Model
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }

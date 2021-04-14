@@ -43,7 +43,6 @@ class PostsManager extends Manager
      */
     public function save(Post $post): bool
     {
-       //récupérer lid du post puis faire un if
         if($post->getId()) {
             return $this->update($post);
         } else {
