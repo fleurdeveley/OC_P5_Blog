@@ -64,6 +64,7 @@ class PostsController extends Controller
         $user = $userManager->one($post->getUserId());
 
         if($request->getMethod() == 'POST') {
+
             $comment = new Comment([
                 'post_id' => $id,
                 'author' => $request->request->get('author'),
