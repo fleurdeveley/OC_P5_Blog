@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <section id="adminpost">
+    <section id="admincomment">
         <div class='row my-3'>
             <div class="col-12 text-center my-3">
                 <h2>Les commentaires</h2>
@@ -32,10 +32,72 @@
                                     <td>{{ comment.content }}</td>
                                     <td>{{ comment.updatedAt|date('d/m/Y') }}</td>
                                     <td>
-                                        <a href="/validatecomment/{{ comment.id }}" class="btn btn-outline-success text-success p-2">Valider</a>
+                                        <button type="button" class="btn btn-outline-success text-success p-2"
+                                                data-toggle="modal" data-target="#modal-valided-{{ comment.id }}">Valider
+                                        </button>
+                                        <div class="modal fade" id="modal-valided-{{ comment.id }}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">
+                                                            Valider un commentaire</h3>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes-vous sûre de vouloir valider le commentaire de
+                                                        {{ comment.author }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-outline-success text-success p-2"
+                                                           href="/validatecomment/{{ comment.id }}">
+                                                            Valider
+                                                        </a>
+                                                        <button type="button" class="btn btn-outline-danger p-2"
+                                                                data-dismiss="modal">
+                                                            Annuler
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
+
                                     <td>
-                                        <a href="/refusecomment/{{ comment.id }}" class="btn btn-outline-danger text-danger p-2">Refuser</a>
+                                        <button type="button" class="btn btn-outline-danger p-2" data-toggle="modal"
+                                                data-target="#modal-refused-{{ comment.id }}">Refuser
+                                        </button>
+                                        <div class="modal fade" id="modal-refused-{{ comment.id }}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">
+                                                            Refuser le commentaire</h3>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes-vous sûre de vouloir refuser le commentaite
+                                                        {{ comment.author }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-outline-success text-success p-2"
+                                                           href="/refusecomment/{{ comment.id }}">
+                                                            Valider
+                                                        </a>
+                                                        <button type="button" class="btn btn-outline-danger p-2"
+                                                                data-dismiss="modal">Annuler
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
