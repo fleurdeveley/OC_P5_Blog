@@ -65,7 +65,7 @@ class UserManager extends Manager
             md5($user->getPassword())
         ]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible de s\'inscrire !');
         }
 

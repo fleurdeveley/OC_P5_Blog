@@ -68,7 +68,7 @@ class PostsManager extends Manager
             $post->getId(),
         ]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible de modifier l\'article !');
         }
 
@@ -94,7 +94,7 @@ class PostsManager extends Manager
             $post->getPicture()
         ]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible d\'insérer l\'article !');
         }
 
@@ -111,7 +111,7 @@ class PostsManager extends Manager
         $query = $this->db->prepare('DELETE FROM post WHERE id = ?');
         $affectedLines = $query->execute([$id]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible de supprimer l\'article !');
         }
 

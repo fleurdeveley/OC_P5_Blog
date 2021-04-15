@@ -45,7 +45,7 @@ class CommentsManager extends Manager
             $comment->getAuthor()
         ]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
         }
 
@@ -78,7 +78,7 @@ class CommentsManager extends Manager
         $query = $this->db->prepare('UPDATE comment SET status = "refusé" WHERE id = ?');
         $affectedLines = $query->execute([$id]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible de passer le commentaire en refusé !');
         }
 
@@ -95,7 +95,7 @@ class CommentsManager extends Manager
         $query = $this->db->prepare('UPDATE comment SET status = "validé" WHERE id = ?');
         $affectedLines = $query->execute([$id]);
 
-        if ($affectedLines == false) {
+        if ($affectedLines === false) {
             throw new Exception('Impossible de passer le commentaire en validé !');
         }
 

@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /register
+Disallow: /administrateur
+Disallow: /adminpost
+Disallow: /readpost/
+Disallow: /editpost/
+Disallow: /addpost
+Disallow: /admincomment
