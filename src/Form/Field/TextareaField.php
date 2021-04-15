@@ -5,7 +5,6 @@ namespace Blog\Form\Field;
 /**
  * Class TextareaField
  */
-
 class TextareaField extends Field
 {
     protected $cols;
@@ -18,18 +17,19 @@ class TextareaField extends Field
     {
         $widget = '<div class="form-group">';
 
-        $widget .= '<label for="'.$this->name.'">'.$this->label.'</label>
-                    <span name="'.$this->name.'" id="'.$this->name.'"class="textarea" role="textbox" contenteditable>';
+        $widget .= '<label for="' . $this->name . '">' . $this->label . '</label>
+                    <div class="grow-wrap">
+                        <textarea name="' . $this->name . '" id="' . $this->name . '" onInput="this.parentNode.dataset.
+                        replicatedValue = this.value">';
 
-        if(!empty($this->value)) {
+        if (!empty($this->value)) {
             $widget .= htmlspecialchars($this->value);
         }
 
-        $widget .= '</span>';
+        $widget .= '</textarea></div>';
 
-        if (!empty($this->errorMessage))
-        {
-            $widget .= '<div class="alert alert-danger">' . $this->errorMessage. '</div>';
+        if (!empty($this->errorMessage)) {
+            $widget .= '<div class="alert alert-danger">' . $this->errorMessage . '</div>';
         }
 
         $widget .= '</div>';
@@ -42,9 +42,9 @@ class TextareaField extends Field
      */
     public function setCols($cols)
     {
-        $cols = (int) $cols;
+        $cols = (int)$cols;
 
-        if($cols > 0) {
+        if ($cols > 0) {
             $this->cols = $cols;
         }
     }
@@ -54,9 +54,9 @@ class TextareaField extends Field
      */
     public function setRows($rows)
     {
-        $rows = (int) $rows;
+        $rows = (int)$rows;
 
-        if($rows > 0) {
+        if ($rows > 0) {
             $this->rows = $rows;
         }
     }

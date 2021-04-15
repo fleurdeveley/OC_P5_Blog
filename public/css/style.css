@@ -44,18 +44,24 @@ a {
     min-height: 150px !important;
 }
 
-.textarea {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    resize: both;
+.grow-wrap {
+    display: grid;
 }
 
-.textarea {
-    border: 1px solid #212529;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: inherit;
-    text-align: justify;
-    padding: 6px 12px;
+.grow-wrap::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+}
+.grow-wrap > textarea {
+    resize: none;
+    overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+    border: 1px solid black;
+    border-radius:5px;
+    padding: 0.5rem;
+    font: inherit;
+    grid-area: 1 / 1 / 2 / 2;
 }
