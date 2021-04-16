@@ -27,13 +27,12 @@ use Twig\Error\SyntaxError;
 class PostsController extends Controller
 {
     /**
-     * @param Request $request
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function posts(Request $request): Response
+    public function posts(): Response
     {
         $postsManager = new PostsManager();
         $posts = $postsManager->all();
@@ -98,13 +97,12 @@ class PostsController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function adminPost(Request $request): Response
+    public function adminPost(): Response
     {
         $postsManager = new PostsManager();
         $posts = $postsManager->all();
@@ -113,14 +111,13 @@ class PostsController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function readPost(Request $request, $id): Response
+    public function readPost($id): Response
     {
         $postsManager = new PostsManager();
         $post = $postsManager->one($id);
@@ -242,12 +239,11 @@ class PostsController extends Controller
     }
 
     /**
-     * @param Request $request
      * @param $id
      * @return Response
      * @throws \Exception
      */
-    public function deletePost(Request $request, $id): Response
+    public function deletePost($id): Response
     {
         $postsManager = new PostsManager();
         $post = $postsManager->delete($id);
