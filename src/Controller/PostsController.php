@@ -111,16 +111,16 @@ class PostsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $postId
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function readPost($id): Response
+    public function readPost($postId): Response
     {
         $postsManager = new PostsManager();
-        $post = $postsManager->one($id);
+        $post = $postsManager->one($postId);
 
         $categoryManager = new CategoryManager();
         $category = $categoryManager->one($post->getCategoryId());
@@ -139,16 +139,16 @@ class PostsController extends Controller
 
     /**
      * @param Request $request
-     * @param $id
+     * @param $postId
      * @return Response
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public function editPost(Request $request, $id): Response
+    public function editPost(Request $request, $postId): Response
     {
         $postsManager = new PostsManager();
-        $post = $postsManager->one($id);
+        $post = $postsManager->one($postId);
 
         $categoriesManager = new CategoryManager();
 
@@ -239,14 +239,14 @@ class PostsController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $postId
      * @return Response
      * @throws \Exception
      */
-    public function deletePost($id): Response
+    public function deletePost($postId): Response
     {
         $postsManager = new PostsManager();
-        $post = $postsManager->delete($id);
+        $post = $postsManager->delete($postId);
 
         return new RedirectResponse('/adminpost');
     }

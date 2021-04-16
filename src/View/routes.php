@@ -37,11 +37,11 @@ $routes->add('adminPost', new Route('/adminpost', [
     '_controller' => '\Blog\Controller\PostsController::adminPost'
 ]));
 
-$routes->add('readPost', new Route('/readpost/{id}', [
+$routes->add('readPost', new Route('/readpost/{postId}', [
     '_controller' => '\Blog\Controller\PostsController::readPost'
 ]));
 
-$routes->add('editPost', new Route('/editpost/{id}', [
+$routes->add('editPost', new Route('/editpost/{postId}', [
     '_controller' => '\Blog\Controller\PostsController::editPost'
 ]));
 
@@ -49,7 +49,7 @@ $routes->add('addPost', new Route('/addpost', [
     '_controller' => '\Blog\Controller\PostsController::addPost'
 ]));
 
-$routes->add('deletePost', new Route('/deletepost/{id}', [
+$routes->add('deletePost', new Route('/deletepost/{postId}', [
     '_controller' => '\Blog\Controller\PostsController::deletePost'
 ]));
 
@@ -57,11 +57,11 @@ $routes->add('adminComment', new Route('/admincomment', [
     '_controller' => '\Blog\Controller\CommentsController::adminComment'
 ]));
 
-$routes->add('refuseComment', new Route('/refusecomment/{id}', [
+$routes->add('refuseComment', new Route('/refusecomment/{commentId}', [
     '_controller' => '\Blog\Controller\CommentsController::refuseComment'
 ]));
 
-$routes->add('validateComment', new Route('/validatecomment/{id}', [
+$routes->add('validateComment', new Route('/validatecomment/{commentId}', [
     '_controller' => '\Blog\Controller\CommentsController::validateComment'
 ]));
 

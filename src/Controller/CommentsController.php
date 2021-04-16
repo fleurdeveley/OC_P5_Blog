@@ -32,26 +32,26 @@ class CommentsController extends Controller
 
 
     /**
-     * @param $id
+     * @param $commentId
      * @return Response
      * @throws \Exception
      */
-    public function refuseComment($id): Response
+    public function refuseComment($commentId): Response
     {
         $commentManager = new CommentsManager();
-        $comments = $commentManager->refuseComment($id);
+        $comments = $commentManager->refuseComment($commentId);
 
         return new RedirectResponse('/admincomment');
     }
 
     /**
-     * @param $id
+     * @param $commentId
      * @return Response
      */
-    public function validateComment($id): Response
+    public function validateComment($commentId): Response
     {
         $commentManager = new CommentsManager();
-        $comments = $commentManager->validateComment($id);
+        $comments = $commentManager->validateComment($commentId);
 
         return new RedirectResponse('/admincomment');
     }

@@ -100,10 +100,9 @@ class LoginController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return RedirectResponse
      */
-    public function logout(Request $request): RedirectResponse
+    public function logout(): RedirectResponse
     {
         $this->session->invalidate();
 
