@@ -5,10 +5,10 @@
     <section id="post">
         <div class="card m-3 p-1">
             <div class="row g-0">
-                <div class="col-md-2">
+                <div class="col-md-2 col-xs-12">
                     <img src="{{ post.picture }}" class="card-img-top" alt="Responsive image">
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10 col-xs-12">
                     <div class="card-body">
                         <h4 class="card-title color-perso2">{{ post.title }}</h4>
                         <div class="row mb-2">
@@ -23,7 +23,7 @@
                         </div>
                         <p class="card-text text-justify">{{ post.content|raw|nl2br }}</p>
                         <p class="card-subtitle mb-2 text-muted">Auteur : {{ user.firstname }} {{ user.lastname }}</p>
-                        <a href="/articles" class="btn bg-light border offset-8 col-4 p-2">
+                        <a href="/articles" class="btn bg-light border offset-md-8 col-md-4 col-xs-12 p-2">
                             Retour à la liste des articles</a>
                     </div>
                 </div>
@@ -36,11 +36,11 @@
             <form action="/articles/{{ post.id }}" method="post">
                 {{ form|raw }}
 
-                <button type="submit" class="btn bg-light border offset-10 col-2 p-2">Envoyer</button>
+                <button type="submit" class="btn bg-light border offset-md-10 col-md-2 col-xs-12 p-2">Envoyer</button>
             </form>
 
             {% for message in session.flashbag.get('add-comment') %}
-                <div class="alert alert-success my-2">{{ message }}</div>
+                <div class="alert alert-success m-2">{{ message }}</div>
             {% endfor %}
 
         </div>

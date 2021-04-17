@@ -13,11 +13,11 @@
 
             {{ form|raw }}
 
-            <button type="submit" class="btn bg-light border offset-10 col-2 mb-3 p-2">S'inscrire</button>
+            <button type="submit" class="btn bg-light border offset-md-10 col-md-2 col-xs-12 mb-3 p-2">S'inscrire</button>
         </form>
 
         {% for message in session.flashbag.get('error-register') %}
-            <div class="alert alert-danger my-2">{{ message }}</div>
+            <div class="alert alert-danger m-2">{{ message }}</div>
         {% endfor %}
 
     </section>

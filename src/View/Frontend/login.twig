@@ -32,17 +32,17 @@
                                        placeholder="Mot de Passe">
                             </div>
 
-                            <div class='text-center offset-8 col-4 p-2'>
+                            <div class='text-center offset-md-8 col-md-4 col-xs-12 p-2'>
                                 <button type="submit" class="btn bg-light border mb-2">
                                     Me connecter
                                 </button>
-                                <a href="/register">Inscription</a>
+                                <a href="/register" class="text-color-perso2">Inscription</a>
                             </div>
                         </form>
                     </div>
 
                     {% for message in session.flashbag.get('error') %}
-                        <div class="alert alert-danger m-2">{{ message }}</div>
+                        <div class="alert alert-danger m-2 text-justify">{{ message }}</div>
                     {% endfor %}
 
                 </div>

@@ -8,9 +8,9 @@
                 <h2>Les articles</h2>
             </div>
 
-            <div class="col-12">
+            <div class="col-xs-12 text-center">
                 <a href="/addpost" class="btn btn-outline-success text-success mb-2 p-2">Ajouter un article</a>
-                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark ml-5 mb-2 p-2">
+                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark ml-md-5 mb-2 p-2">
                     Retour à l'accueil administration</a>
             </div>
 
@@ -32,7 +32,8 @@
                                 <td>{{ post.title }}</td>
                                 <td>{{ post.chapo }}</td>
                                 <td>{{ post.updatedAt|date('d/m/Y') }}</td>
-                                <td><a href="/readpost/{{ post.id }}" class="btn btn-outline-light border p-2">Afficher</a>
+                                <td><a href="/readpost/{{ post.id }}" class="btn btn-outline-secondary border p-2">
+                                        Afficher</a>
                                 </td>
                                 <td><a href="/editpost/{{ post.id }}" class="btn btn-outline-warning text-warning p-2">
                                         Modifier</a></td>

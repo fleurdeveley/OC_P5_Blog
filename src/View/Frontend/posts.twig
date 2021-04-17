@@ -15,15 +15,16 @@
                     <div class="col-md-2 my-auto mx-auto">
                         <img src="{{ post.picture }}" class="card-img-top" alt="Responsive image">
                     </div>
-                    <div class="col-md-10">
+
+                    <div class="col-md-10 col-xs-11">
                         <div class="card-body">
                             <h4 class="card-title color-perso2">{{ post.title }}</h4>
                             <p class="card-text">
                                 <small class="text-muted">modifié le {{ post.updatedAt|date('d/m/Y') }}</small>
                             </p>
                             <p class="card-text text-justify">{{ post.chapo }}</p>
-                            <a href="/articles/{{ post.id }}" class="btn bg-light border offset-10 col-2 p-2">
-                                Lire la suite</a>
+                            <a href="/articles/{{ post.id }}" class="btn bg-light border offset-md-10 col-md-2 col-xs-12
+                            p-2"> Lire la suite</a>
                         </div>
                     </div>
                 </div>

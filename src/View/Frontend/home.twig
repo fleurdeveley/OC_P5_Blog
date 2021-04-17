@@ -4,45 +4,43 @@
     <section id="home">
         <div class="row m-4">
             <div class="col-12 text-center">
-                <img id="photo" class="img-responsive" src="/img/logo.png" alt="logo">
+                <img id="photo" class="img-fluid" src="/img/logo.png" alt="logo">
                 <p>Cette reconversion professionnelle est un vrai défi : apprendre et se remettre en question.</p>
             </div>
         </div>
 
-        <div class="row m-4 pt-3">
-            <div class="col-xs-12 col-lg-4">
+        <div class="row m-4 p-3">
+            <div class="col-xs-12 col-md-4 p-1">
                 <div class="card">
                     <h4 class="card-header bg-perso3 text-center color-perso2">GitHub</h4>
                     <div class="card-body text-justify">
                         <p>
-                            <a href="https://github.com/fleurdeveley/" target="_blank"> <i
-                                        class="fab fa-github-square fa-2x"></i></a>
-                            Mon outil de stockage de dev
+                            <a href="https://github.com/fleurdeveley/" target="_blank">
+                                <i class="fab fa-github-square fa-2x"></i> Mon outil de stockage de dev</a>
+
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-lg-4">
+            <div class="col-xs-12 col-md-4 p-1">
                 <div class="card">
                     <h4 class="card-header bg-perso3 text-center color-perso2">Linkedin</h4>
                     <div class="card-body text-justify">
-                        <p>
-                            <a href="https://www.linkedin.com/in/fleur-develey-8b4b4718a" target="_blank"> <i
-                                        class="fab fa-linkedin fa-2x"></i></a>
-                            Mon réseau social professionnel
+                        <a>
+                            <a href="https://www.linkedin.com/in/fleur-develey-8b4b4718a" target="_blank">
+                                <i class="fab fa-linkedin fa-2x"></i> Mon réseau social professionnel</a>
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-lg-4">
+            <div class="col-xs-12 col-md-4 p-1">
                 <div class="card">
                     <h5 class="card-header bg-perso3 text-center color-perso2">CV</h5>
                     <div class="card-body text-justify">
                         <p>
-                            <a href="/img/cv.pdf" target="_blank">CV</a>
-                            N'hésitez pas à le consulter
+                            <a href="/img/cv.pdf" target="_blank">CV N'hésitez pas à le consulter</a>
                         </p>
                     </div>
                 </div>
@@ -58,12 +56,12 @@
 
                 {{ form|raw }}
 
-                <button type="submit" class="btn bg-light border offset-10 col-2 p-2">Envoyer</button>
+                <button type="submit" class="btn bg-light border offset-md-10 col-md-2 col-xs-12 p-2">Envoyer</button>
 
             </form>
 
             {% for message in session.flashbag.get('contact') %}
-                <div class="alert alert-success my-2">{{ message }}</div>
+                <div class="alert alert-success m-2 text-justify">{{ message }}</div>
             {% endfor %}
 
         </div>
