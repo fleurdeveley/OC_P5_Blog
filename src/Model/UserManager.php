@@ -2,6 +2,7 @@
 
 namespace Blog\Model;
 
+use Exception;
 use PDO;
 
 /**
@@ -33,7 +34,7 @@ class UserManager extends Manager
         $query->execute([$email]);
         $data = $query->fetch(PDO::FETCH_ASSOC);
 
-        if($data == false) {
+        if($data === false) {
             $data = [];
         }
 
