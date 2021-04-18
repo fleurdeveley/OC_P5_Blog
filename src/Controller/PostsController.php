@@ -154,7 +154,7 @@ class PostsController extends Controller
 
         if($request->getMethod() == 'POST') {
             $post = new Post([
-                'id' => $id,
+                'id' => $postId,
                 'title' => $request->request->get('title'),
                 'category_id' => $request->request->get('category_id'),
                 'chapo' => $request->request->get('chapo'),
@@ -162,7 +162,7 @@ class PostsController extends Controller
                 'picture' => $request->request->get('picture')
             ]);
         } else {
-            $post = $postsManager->one($id);
+            $post = $postsManager->one($postId);
         }
 
         $categories = $categoriesManager->all();
