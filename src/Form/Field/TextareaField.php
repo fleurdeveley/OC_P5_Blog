@@ -20,7 +20,13 @@ class TextareaField extends Field
         $widget .= '<label for="' . $this->name . '">' . $this->label . '</label>
                     <div class="grow-wrap">
                         <textarea name="' . $this->name . '" id="' . $this->name . '" onInput="this.parentNode.dataset.
-                        replicatedValue = this.value">';
+                        replicatedValue = this.value"';
+
+        if (!empty($this->rows)) {
+            $widget .= ' rows="'.$this->rows.'"';
+        }
+
+        $widget .= '>';
 
         if (!empty($this->value)) {
             $widget .= htmlspecialchars($this->value);

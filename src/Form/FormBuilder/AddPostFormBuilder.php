@@ -55,6 +55,7 @@ class AddPostFormBuilder extends FormBuilder
             ->add(new TextareaField([
                 'label' => 'Contenu',
                 'name' => 'content',
+                'rows' => 15,
                 'validators' => [
                     new NotNullValidator('Merci de saisir un contenu.')
                 ]
