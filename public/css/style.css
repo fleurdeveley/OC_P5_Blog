@@ -32,13 +32,12 @@ h4 {
   color: #e5a5b8;
 }
 
+a {
+  color: #565656;
+}
 a:hover {
   text-decoration: none;
   color: #848484;
-}
-
-a {
-  color: #565656;
 }
 
 #home .card {
