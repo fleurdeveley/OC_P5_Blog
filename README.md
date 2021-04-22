@@ -23,5 +23,6 @@ As a part of a study project, realization of the structure of a blog.
 ### Source
 * git clone https://github.com/fleurdeveley/OC_P5_Blog
 
-### Dependancy
+### Installation
 * composer install
+* Copy .env.example to .env and fill your information

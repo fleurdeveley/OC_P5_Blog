@@ -61,8 +61,4 @@ $routes->add('refuseComment', new Route('/refusecomment/{commentId}', [
     '_controller' => '\Blog\Controller\CommentsController::refuseComment'
 ]));
 
-$routes->add('validateComment', new Route('/validatecomment/{commentId}', [
-    '_controller' => '\Blog\Controller\CommentsController::validateComment'
-]));
-
 return $routes;

@@ -26,9 +26,9 @@ abstract class Manager
     protected function dbConnect(): PDO
     {
         return new PDO(
-            'mysql:host=mysql_mysql; dbname=blog; charset=utf8',
-            'root',
-            'garfield',
+            'mysql:host='.$_ENV['DB_HOST'].'; dbname='.$_ENV['DB_NAME'].'; charset=utf8',
+            $_ENV['DB_USER'],
+            $_ENV['DB_PASSWORD'],
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }
