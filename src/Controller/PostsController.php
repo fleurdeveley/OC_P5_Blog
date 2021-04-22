@@ -153,14 +153,22 @@ class PostsController extends Controller
         $categoriesManager = new CategoryManager();
 
         if($request->getMethod() == 'POST') {
+
             $post = new Post([
                 'id' => $postId,
                 'title' => $request->request->get('title'),
                 'category_id' => $request->request->get('category_id'),
                 'chapo' => $request->request->get('chapo'),
                 'content' => $request->request->get('content'),
-                'picture' => $request->request->get('picture')
+                'picture' => $post->getPicture()
             ]);
+
+            if ($request->files->get('picture')) {
+                $file = $request->files->get('picture');
+                $file->move('/var/www/html/public/img/', $file->getClientOriginalName());
+                $post->setPicture('/img/' . $file->getClientOriginalName());
+            }
+
         } else {
             $post = $postsManager->one($postId);
         }
@@ -202,13 +210,17 @@ class PostsController extends Controller
         $categoriesManager = new CategoryManager();
 
         if($request->getMethod() == 'POST') {
+
+            $file = $request->files->get('picture');
+            $file->move('/var/www/html/public/img/', $file->getClientOriginalName());
+
             $post = new Post([
                 'title' => $request->request->get('title'),
                 'category_id' => $request->request->get('category_id'),
                 'user_id' => $this->session->get('user_id'),
                 'chapo' => $request->request->get('chapo'),
                 'content' => $request->request->get('content'),
-                'picture' => $request->request->get('picture')
+                'picture' => '/img/' . $file->getClientOriginalName()
             ]);
         } else {
             $post = new Post(['user_id' => $this->session->get('user_id')]);

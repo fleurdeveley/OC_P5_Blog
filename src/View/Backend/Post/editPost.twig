@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <form action="/editpost/{{ post.id }}" method="post">
+        <form action="/editpost/{{ post.id }}" method="post" enctype="multipart/form-data">
 
             {{ form|raw }}
 

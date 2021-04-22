@@ -2,6 +2,7 @@
 
 namespace Blog\Form\FormBuilder;
 
+use Blog\Form\Field\FileField;
 use Blog\Form\Field\SelectField;
 use Blog\Form\Field\TextareaField;
 use Blog\Form\Field\TextField;
@@ -59,12 +60,10 @@ class EditPostFormBuilder extends FormBuilder
                     new NotNullValidator('Merci de modifier le contenu.')
                 ]
             ]))
-            ->add(new TextField([
-                'label' => 'Image',
+            ->add(new FileField([
+                'label' => 'Choisir une image',
                 'name' => 'picture',
-                'validators' => [
-                    new NotNullValidator('Merci de modifier la picture.')
-                ]
+                'validators' => []
             ]));
     }
 }
