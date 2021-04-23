@@ -38,6 +38,7 @@ abstract class Controller
         $this->twig->addGlobal('session', $this->session);
 
         $dotenv = new Dotenv();
+        $dotenv->usePutenv();
         $dotenv->load('../.env');
     }
 }

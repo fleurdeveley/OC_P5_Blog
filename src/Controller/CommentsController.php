@@ -39,7 +39,7 @@ class CommentsController extends Controller
     public function refuseComment($commentId): Response
     {
         $commentManager = new CommentsManager();
-        $comments = $commentManager->refuseComment($commentId);
+        $commentManager->refuseComment($commentId);
 
         return new RedirectResponse('/admincomment');
     }
@@ -51,7 +51,7 @@ class CommentsController extends Controller
     public function validateComment($commentId): Response
     {
         $commentManager = new CommentsManager();
-        $comments = $commentManager->validateComment($commentId);
+        $commentManager->validateComment($commentId);
 
         return new RedirectResponse('/admincomment');
     }
