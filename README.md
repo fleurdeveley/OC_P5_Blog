@@ -5,24 +5,24 @@
 As a part of a study project, realization of the structure of a blog.
 
 ### Technolgies
-* PHP v7.4
-* Composer
-* GitHub
+  * PHP v7.4
+  * Composer
+  * GitHub
   
 ### Server configuration
-* Host : Linux Unbutu
+  * Host : Linux Unbutu
 
 ### Development in PHP
-* MVC
-* POO
+  * MVC
+  * POO
 
 ### Database
-* Creating a "Blog" database using MySQL
-* Creating of the different tables
+  * Creating a "Blog" database using MySQL
+  * Creating of the different tables
 
 ### Source
-* git clone https://github.com/fleurdeveley/OC_P5_Blog
+  * git clone https://github.com/fleurdeveley/OC_P5_Blog
 
 ### Installation
-* composer install
-* Copy .env.example to .env and fill your information
+  * composer install
+  * Copy .env.example to .env and fill your information
