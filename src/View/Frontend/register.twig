@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="register">
+        <div class="row m-3 p-1">
+            <div class="col-12 text-center">
+                <h2 class="text-perso2 color-perso2">Inscription</h2>
+            </div>
+        </div>
+
+        <form action="/register" method="post">
+
+            {{ form|raw }}
+
+            <button type="submit" class="btn bg-light border offset-md-10 col-md-2 col-xs-12 mb-3 p-2">S'inscrire</button>
+        </form>
+
+        {% for message in session.flashbag.get('error-register') %}
+            <div class="alert alert-danger m-2">{{ message }}</div>
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

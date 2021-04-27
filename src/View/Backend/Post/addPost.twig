@@ -1,0 +1,20 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="addpost">
+        <div class="row m-3 p-1">
+            <div class="col-12 text-center">
+                <h3 class="text-perso2 color-perso2">Créer un article</h3>
+            </div>
+        </div>
+
+        <form action="/addpost" method="post" enctype="multipart/form-data">
+
+            {{ form|raw }}
+
+            <button type="submit" class="btn btn-outline-success offset-md-10 col-md-2 col-xs-12 mb-3 p-2">Créer</button>
+        </form>
+    </section>
+
+{% endblock %}

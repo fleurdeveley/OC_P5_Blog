@@ -1,0 +1,112 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="admincomment">
+        <div class='row my-3'>
+            <div class="col-12 text-center my-3">
+                <h2>Les commentaires</h2>
+            </div>
+
+            <div class="col-md-4 offset-md-8 col-xs-12 text-center">
+                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark mb-2 p-2">
+                    Retour à l'accueil administration</a>
+            </div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bodered">
+                        <thead>
+                            <th class="table-active">#</th>
+                            <th class="table-active">Auteur</th>
+                            <th class="table-active">Contenu</th>
+                            <th class="table-active" colspan=3>Modifié le</th>
+                            <th class="table-active"></th>
+                        </thead>
+
+                        {% for comment in comments %}
+                            <tbody>
+                                <tr class="text-justify">
+                                    <td>{{ comment.id }}</td>
+                                    <td>{{ comment.author }}</td>
+                                    <td>{{ comment.content }}</td>
+                                    <td>{{ comment.updatedAt|date('d/m/Y') }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-success text-success p-2"
+                                                data-toggle="modal" data-target="#modal-valided-{{ comment.id }}">Valider
+                                        </button>
+                                        <div class="modal fade" id="modal-valided-{{ comment.id }}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">
+                                                            Valider un commentaire</h3>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes-vous sûre de vouloir valider le commentaire de
+                                                        {{ comment.author }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-outline-success text-success p-2"
+                                                           href="/validatecomment/{{ comment.id }}">
+                                                            Valider
+                                                        </a>
+                                                        <button type="button" class="btn btn-outline-danger p-2"
+                                                                data-dismiss="modal">
+                                                            Annuler
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-outline-danger p-2" data-toggle="modal"
+                                                data-target="#modal-refused-{{ comment.id }}">Refuser
+                                        </button>
+                                        <div class="modal fade" id="modal-refused-{{ comment.id }}" tabindex="-1"
+                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">
+                                                            Refuser le commentaire</h3>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Êtes-vous sûre de vouloir refuser le commentaire de
+                                                        {{ comment.author }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-outline-success text-success p-2"
+                                                           href="/refusecomment/{{ comment.id }}">
+                                                            Valider
+                                                        </a>
+                                                        <button type="button" class="btn btn-outline-danger p-2"
+                                                                data-dismiss="modal">Annuler
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

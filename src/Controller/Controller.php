@@ -2,6 +2,7 @@
 
 namespace Blog\Controller;
 
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -35,5 +36,9 @@ abstract class Controller
         $this->session = new Session();
         $this->session->start();
         $this->twig->addGlobal('session', $this->session);
+
+        $dotenv = new Dotenv();
+        $dotenv->usePutenv();
+        $dotenv->load('../.env');
     }
 }

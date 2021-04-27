@@ -103,9 +103,9 @@ class Comment extends Model
 
     /**
      * @param string $format
-     * @return string
+     * @return mixed
      */
-    public function getCreatedAt($format = 'd-m-Y H:i:s'): string
+    public function getCreatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->created_at->format($format);
     }
@@ -125,9 +125,9 @@ class Comment extends Model
 
     /**
      * @param string $format
-     * @return string
+     * @return mixed
      */
-    public function getUpdatedAt($format = 'd-m-Y H:i:s'): string
+    public function getUpdatedAt($format = 'd-m-Y H:i:s')
     {
         return $this->updated_at->format($format);
     }

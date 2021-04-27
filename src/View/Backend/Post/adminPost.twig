@@ -1,0 +1,83 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <section id="adminpost">
+        <div class='row my-3'>
+            <div class="col-12 text-center my-3">
+                <h2>Les articles</h2>
+            </div>
+
+            <div class="col-12">
+                <a href="/addpost" class="btn btn-outline-success text-success mb-2 p-2">Ajouter un article</a>
+                <a href="/administrateur" class="btn btn-outline-white text-color-perso3 border-dark ml-md-5 mb-2 p-2">
+                    Retour à l'accueil administration</a>
+            </div>
+
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bodered">
+                        <thead>
+                            <th class="table-active">#</th>
+                            <th class="table-active">Titre</th>
+                            <th class="table-active">Chapo</th>
+                            <th class="table-active" colspan=3>Modifié le</th>
+                            <th class="table-active"></th>
+                        </thead>
+
+                        {% for post in posts %}
+                            <tbody>
+                            <tr class="text-justify">
+                                <td>{{ post.id }}</td>
+                                <td>{{ post.title }}</td>
+                                <td>{{ post.chapo }}</td>
+                                <td>{{ post.updatedAt|date('d/m/Y') }}</td>
+                                <td><a href="/readpost/{{ post.id }}" class="btn btn-outline-secondary border p-2">
+                                        Afficher</a>
+                                </td>
+                                <td><a href="/editpost/{{ post.id }}" class="btn btn-outline-warning text-warning p-2">
+                                        Modifier</a></td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger p-2" data-toggle="modal"
+                                            data-target="#modal-{{ post.id }}">Supprimer
+                                    </button>
+                                    <div class="modal fade" id="modal-{{ post.id }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="modal-{{ post.id }}-Label">
+                                                        Supprimer un article</h3>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Êtes-vous sûre de vouloir supprimer l'article {{ post.title }} ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-danger p-2"
+                                                            data-dismiss="modal">
+                                                        Annuler
+                                                    </button>
+                                                    <a class="btn btn-outline-success text-success p-2"
+                                                       href="/deletepost/{{ post.id }}">
+                                                        Valider
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

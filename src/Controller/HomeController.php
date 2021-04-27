@@ -49,7 +49,8 @@ class HomeController extends Controller
         $formHandler = new FormHandler($form, $contactManager, $request);
 
         if($formHandler->process()) {
-            $this->session->getFlashBag()->add('contact', 'Le formulaire de contact a été envoyé avec succes !');
+            $this->session->getFlashBag()->add('contact', 'Le formulaire de contact 
+            a été envoyé avec succes !');
         }
 
         return new Response($this->twig->render('Frontend/home.twig',
