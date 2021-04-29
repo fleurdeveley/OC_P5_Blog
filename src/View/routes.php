@@ -57,6 +57,10 @@ $routes->add('adminComment', new Route('/admincomment', [
     '_controller' => '\Blog\Controller\CommentsController::adminComment'
 ]));
 
+$routes->add('validateComment', new Route('/validatecomment/{commentId}', [
+    '_controller' => '\Blog\Controller\CommentsController::validateComment'
+]));
+
 $routes->add('refuseComment', new Route('/refusecomment/{commentId}', [
     '_controller' => '\Blog\Controller\CommentsController::refuseComment'
 ]));
