@@ -19,8 +19,7 @@ As a part of a study project, realization of the structure of a blog.
 * POO
 
 ## Database
-* Creating a "Blog" database using MySQL
-* Creating of the different tables
+* Creating a "Blog" database using MySQL : import blog.sql
 
 ## Source
 * git clone https://github.com/fleurdeveley/OC_P5_Blog
