@@ -12,7 +12,7 @@ As a part of a study project, realization of the structure of a blog.
 * GitHub
   
 ## Server configuration
-* Host : Linux Unbutu
+* Host : Linux Unbuntu
 
 ## Development in PHP
 * MVC
@@ -23,6 +23,7 @@ As a part of a study project, realization of the structure of a blog.
 
 ## Source
 * git clone https://github.com/fleurdeveley/OC_P5_Blog
+* The web server must be configured to point to the public folder in which index.php is located.
 
 ## Installation
 * composer install
