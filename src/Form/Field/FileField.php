@@ -14,10 +14,10 @@ class FileField extends Field
     public function buildWidget(): string
     {
 
-    $widget = '<div class="custom-file mb-3">';
+        $widget = '<div class="mb-3">';
 
         $widget .= '<label for="'.$this->name.'" class="custom-file-label">'.$this->label.'</label>
-                    <input type="file" id="'.$this->name.'" name="'.$this->name.'" class="form-control custom-file-input"';
+                    <input type="file" id="'.$this->name.'" name="'.$this->name.'" class="form-control form-control-lg"';
 
         if(!empty($this->value)) {
             $widget .= ' value="'.htmlspecialchars($this->value).'"';
