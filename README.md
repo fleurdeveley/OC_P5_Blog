@@ -10,9 +10,32 @@ As a part of a study project, realization of the structure of a blog.
 * PHP v7.4
 * Composer
 * GitHub
-  
+
 ## Server configuration
-* Host : Linux Unbuntu
+* Host : Linux Ubuntu
+* The web server must be configured to point to the public folder in which index.php is located.
+
+#### Examples configurations
+* Apache configuration example : <br />
+  Allow url rewriting in .htaccess <br />
+  
+  ```
+    <Directory />
+      Options Indexes FollowSymLinks
+      AllowOverride All
+    </Directory>
+  ```  
+
+* Nginx configuration example : <br />
+
+  ```
+    root /var/www/html/public;
+    index index.php index.html;
+  
+      location / {
+           try_files $uri $uri/ /index.php$is_args$args;
+      }
+  ```
 
 ## Development in PHP
 * MVC
@@ -23,7 +46,6 @@ As a part of a study project, realization of the structure of a blog.
 
 ## Source
 * git clone https://github.com/fleurdeveley/OC_P5_Blog
-* The web server must be configured to point to the public folder in which index.php is located.
 
 ## Installation
 * composer install
