@@ -165,8 +165,7 @@ class PostsController extends Controller
 
             if ($request->files->get('picture')) {
                 $file = $request->files->get('picture');
-                // modifier le chemin pour que sur n'importe quelle machine, je puisse pointer vers le dossier img
-                $file->move('/var/www/html/public/img/', $file->getClientOriginalName());
+                $file->move('../public/img/', $file->getClientOriginalName());
                 $post->setPicture('/img/' . $file->getClientOriginalName());
             }
 
@@ -214,7 +213,7 @@ class PostsController extends Controller
         if($request->getMethod() == 'POST') {
 
             $file = $request->files->get('picture');
-            $file->move('/var/www/html/public/img/', $file->getClientOriginalName());
+            $file->move('../public/img/', $file->getClientOriginalName());
 
             $post = new Post([
                 'title' => $request->request->get('title'),
