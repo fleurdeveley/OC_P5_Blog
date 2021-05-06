@@ -16,7 +16,7 @@ class FileField extends Field
 
         $widget = '<div class="mb-3">';
 
-        $widget .= '<label for="'.$this->name.'" class="custom-file-label">'.$this->label.'</label>
+        $widget .= '<label for="'.$this->name.'" class="form-label">'.$this->label.'</label>
                     <input type="file" id="'.$this->name.'" name="'.$this->name.'" class="form-control form-control-lg"';
 
         if(!empty($this->value)) {

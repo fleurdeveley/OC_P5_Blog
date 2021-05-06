@@ -165,6 +165,7 @@ class PostsController extends Controller
 
             if ($request->files->get('picture')) {
                 $file = $request->files->get('picture');
+                // modifier le chemin pour que sur n'importe quelle machine, je puisse pointer vers le dossier img
                 $file->move('/var/www/html/public/img/', $file->getClientOriginalName());
                 $post->setPicture('/img/' . $file->getClientOriginalName());
             }
@@ -175,6 +176,7 @@ class PostsController extends Controller
 
         $categories = $categoriesManager->all();
 
+        $options = [];
         foreach($categories as $category) {
             $options[$category->getId()] = $category->getName();
         }
@@ -228,6 +230,7 @@ class PostsController extends Controller
 
         $categories = $categoriesManager->all();
 
+        $options = [];
         foreach($categories as $category) {
             $options[$category->getId()] = $category->getName();
         }
